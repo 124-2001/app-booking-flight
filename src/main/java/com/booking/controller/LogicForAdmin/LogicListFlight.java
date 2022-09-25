@@ -76,8 +76,13 @@ public class LogicListFlight {
         else {
             System.out.println("*******LIST CÁC CHUYẾN BAY*******");
             for (Flight flight : flights) {
-                System.out.println("*********************************");
-                System.out.println();
+                System.out.println("*****************************************");
+                System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
+                System.out.println("Tên chuyến bay : "+flight.getFlightName());
+                System.out.println("Điểm xuất phát : "+flight.getFromPlace()+" Điểm kết thúc : "+flight.getToPlace());
+                System.out.println("Giá vé : "+flight.getPrice());
+                System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
+                System.out.println("*****************************************");
             }
         }
     }
