@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class LogicShowList {
+public class LogicListFlight {
     List<Flight> flights = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
@@ -63,6 +63,21 @@ public class LogicShowList {
             }
             if(count==0){
                 System.out.println("Không tìm thấy chuyến bay phù hợp . ");
+            }
+            ///trở về màn hình ...
+        }
+    }
+
+    public void ShowListFlight(){
+        if(CheckListFlightNull()){
+            System.out.println("Danh sách đang rỗng . ");
+            //trở về màn hình ...
+        }
+        else {
+            System.out.println("*******LIST CÁC CHUYẾN BAY*******");
+            for (Flight flight : flights) {
+                System.out.println("*********************************");
+                System.out.println();
             }
         }
     }
