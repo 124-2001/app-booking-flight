@@ -52,6 +52,18 @@ public class LogicShowList {
         else {
             System.out.println("Nhập mã chuyến bay để huỷ : ");
             String code = sc.nextLine();
+            int count =0;
+            for (Flight flight : flights) {
+                if(!code.contains(flight.getFlightCode())){
+                    flights.remove(flight);
+                    System.out.println("Huỷ chuyến bay thành công !");
+                    count++;
+                    break;
+                }
+            }
+            if(count==0){
+                System.out.println("Không tìm thấy chuyến bay phù hợp . ");
+            }
         }
     }
 
