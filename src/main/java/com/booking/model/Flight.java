@@ -1,6 +1,9 @@
 package com.booking.model;
 
+import java.util.Date;
+
 public class Flight {
+
     private String flightCode;
     private String flightName;
     private String fromPlace;
@@ -55,4 +58,14 @@ public class Flight {
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
+
+/*    private int flightId;
+    private String flightCode;
+    private String fightName;
+    private String fromPlace;
+    private String toPlace;
+    private Date startTimePlan;
+    private Date endTimePlan;
+    private Date totalSeat;*/
+
 }
