@@ -1,10 +1,10 @@
-package com.booking.view;
+package com.booking.View;
 
 import java.util.Scanner;
 import com.booking.controller.regex.*;
 
 public class Register {
-    public static void register() {
+    public  void register() {
         Scanner scan = new Scanner (System.in);
         System.out.println("Đăng ký");
         System.out.println("Loại tài khoản: 0 - Tài khoản người dùng; 1 - Tài khoản admin");

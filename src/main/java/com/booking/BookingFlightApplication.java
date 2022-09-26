@@ -1,7 +1,10 @@
 package com.booking;
 
+import com.booking.View.MenuMain;
+
 public class BookingFlightApplication {
     public static void main(String[] args) {
-        System.out.println("booking flight app");
+        MenuMain main = new MenuMain();
+        main.DisplayMain();
     }
 }

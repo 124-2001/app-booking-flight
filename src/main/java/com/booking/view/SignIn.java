@@ -1,10 +1,9 @@
-package com.booking.view;
-
+package com.booking.View;
 import com.booking.controller.regex.*;
 import java.util.Scanner;
 
 public class SignIn {
-    public static void signIn() {
+    public  void signIn() {
         Scanner scan = new Scanner (System.in);
         System.out.println("Đăng nhập");
         System.out.print("Địa chỉ email: ");
