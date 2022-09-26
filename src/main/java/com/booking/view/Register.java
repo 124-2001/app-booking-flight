@@ -1,4 +1,4 @@
-package com.booking.view;
+package com.booking.View;
 
 import java.util.Scanner;
 import com.booking.controller.regex.*;
