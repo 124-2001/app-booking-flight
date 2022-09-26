@@ -86,5 +86,8 @@ public class LogicListFlight {
             }
         }
     }
+    public void ChangeFlight(){
+
+    }
 
 }
