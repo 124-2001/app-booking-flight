@@ -15,6 +15,15 @@ public class LogicListUser {
         return false;
     }
 
+    public boolean CheckUserIsExist(String email){
+        for (User user : users) {
+            if(user.getEmail().contains(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void ShowListUser(){
         if(CheckListUserNull()){
             System.out.println("Danh sách người dùng đang rỗng . ");
@@ -28,6 +37,23 @@ public class LogicListUser {
                 System.out.println("Email : "+user.getEmail());
                 System.out.println("--------------------------");
                 count++;
+            }
+        }
+    }
+
+    public void DeleteUserByEmail(String email){
+        if(!CheckUserIsExist(email)){
+            System.out.println("Không tìm được user, user không tồn tại . ");
+            //trở về màn hình ...
+
+        }
+        else {
+            for (User user : users) {
+                if (user.getEmail().equalsIgnoreCase(email)){
+                    users.remove(user);
+                    System.out.println("Xóa thành công user : "+email);
+                    break;
+                }
             }
         }
     }
