@@ -1,6 +1,4 @@
-package com.booking.View.ViewForAdmin;
-
-import java.security.PublicKey;
+package com.booking.view.ViewForAdmin;
 
 public class NotificationVoucherFlight {
     public void MakeVoucher(){

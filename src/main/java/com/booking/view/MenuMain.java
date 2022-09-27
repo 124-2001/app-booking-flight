@@ -1,4 +1,4 @@
-package com.booking.View;
+package com.booking.view;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class MenuMain {
         System.out.println("******************************");
         System.out.println("1) Đăng nhập");
         System.out.println("2) Đăng ký");
-        System.out.println("3) Quit");
+        System.out.println("3) Thoát");
         System.out.println("******************************");
         System.out.println("NHẬP LỰA CHỌN : ");
         int n = sc.nextInt();

@@ -1,6 +1,6 @@
 package com.booking;
 
-import com.booking.View.MenuMain;
+import com.booking.view.MenuMain;
 
 public class BookingFlightApplication {
     public static void main(String[] args) {

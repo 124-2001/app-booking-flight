@@ -1,4 +1,4 @@
-package com.booking.View.ViewForAdmin;
+package com.booking.view.ViewForAdmin;
 
 import com.booking.controller.LogicForAdmin.LogicListFlight;
 
