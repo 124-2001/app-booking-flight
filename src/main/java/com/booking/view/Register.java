@@ -6,7 +6,7 @@ import com.booking.controller.Regex.*;
 public class Register {
     public void register() {
         Scanner scan = new Scanner (System.in);
-        System.out.println("Đăng ký tài khoản người dùng");
+        System.out.println("***** Đăng ký tài khoản người dùng *****");
         int tempPerm = 1; //nếu là 0 => admin  1=> user  2=> guest
 
         System.out.print("Địa chỉ email: ");

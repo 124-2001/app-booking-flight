@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SignIn {
     public void signIn() {
         Scanner scan = new Scanner (System.in);
-        System.out.println("Đăng nhập");
+        System.out.println("*************** Đăng nhập **************");
         System.out.print("Địa chỉ email: ");
         String tempEmail = scan.nextLine();
         while (EmailRegex.emailRegex(tempEmail)) {
