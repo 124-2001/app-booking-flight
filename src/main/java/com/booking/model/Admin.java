@@ -3,6 +3,7 @@ package com.booking.model;
 public class Admin {
     private String email;
     private String passWord;
+    private int position_id;  //nếu là 0 => admin  1=> user  2=> guest
 
     public String getEmail() {
         return email;
@@ -27,6 +28,4 @@ public class Admin {
     public void setPosition_id(int position_id) {
         this.position_id = position_id;
     }
-
-    private int position_id;  //nếu là 0 => admin  1=> user  2=> guest
 }

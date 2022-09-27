@@ -1,6 +1,6 @@
 package com.booking.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 public class Flight {
 
@@ -8,8 +8,9 @@ public class Flight {
     private String flightName;
     private String fromPlace;
     private String toPlace;
+    private Calendar time;
     private long price;
-    private int  numberOfSeats;
+    private int numberOfSeats;
 
     public String getFlightCode() {
         return flightCode;
@@ -41,6 +42,14 @@ public class Flight {
 
     public void setToPlace(String toPlace) {
         this.toPlace = toPlace;
+    }
+
+    public Calendar getTime() {
+        return time;
+    }
+
+    public void setTime(Calendar time) {
+        this.time = time;
     }
 
     public long getPrice() {
