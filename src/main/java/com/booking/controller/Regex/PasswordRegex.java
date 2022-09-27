@@ -1,4 +1,4 @@
-package com.booking.controller.regex;
+package com.booking.controller.Regex;
 
 import java.util.regex.Pattern;
 

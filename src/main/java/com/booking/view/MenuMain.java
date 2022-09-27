@@ -1,16 +1,19 @@
-package com.booking.View;
+package com.booking.view;
 
 import java.util.Scanner;
 
 public class MenuMain {
     public static void DisplayMain(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("******************************");
+        System.out.println("****************************************");
         System.out.println("1) Đăng nhập");
         System.out.println("2) Đăng ký");
         System.out.println("3) Thoát chương trình");
         System.out.println("******************************");
         System.out.println("NHẬP LỰA CHỌN : ");
+        System.out.println("3) Thoát");
+        System.out.println("****************************************");
+        System.out.println("Nhập lựa chọn : ");
         int n = sc.nextInt();
         switch (n){
             case 1:

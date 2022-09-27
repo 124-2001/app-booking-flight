@@ -1,21 +1,13 @@
-package com.booking.View;
+package com.booking.view;
 
 import java.util.Scanner;
-import com.booking.controller.regex.*;
+import com.booking.controller.Regex.*;
 
 public class Register {
-    public  void register() {
+    public void register() {
         Scanner scan = new Scanner (System.in);
-        System.out.println("Đăng ký");
-        System.out.println("Loại tài khoản: 0 - Tài khoản người dùng; 1 - Tài khoản admin");
-        System.out.print("Chọn loại tài khoản: ");
-        int tempPerm = scan.nextInt();
-        while (tempPerm != 1 && tempPerm != 0) {
-            System.out.println("Vui lòng chỉ chọn giá trị 0 hoặc 1");
-            System.out.println("Loại tài khoản: 0 - Tài khoản người dùng; 1 - Tài khoản admin");
-            System.out.print("Chọn loại tài khoản: ");
-            tempPerm = scan.nextInt();
-        }
+        System.out.println("***** Đăng ký tài khoản người dùng *****");
+        int tempPerm = 1; //nếu là 0 => admin  1=> user  2=> guest
 
         System.out.print("Địa chỉ email: ");
         String tempEmail = scan.nextLine();

@@ -1,4 +1,4 @@
-package com.booking.View.ViewForAdmin;
+package com.booking.view.ViewForAdmin;
 
 import com.booking.controller.LogicForAdmin.LogicListFlight;
 
@@ -15,7 +15,7 @@ public class MenuOptionAdmin {
         System.out.println("6) Đăng xuất");
         System.out.println("**************************");
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập lựa chọn : ");
+        System.out.print("Nhập lựa chọn: ");
         int n = sc.nextInt();
         switch (n){
             case 1:
