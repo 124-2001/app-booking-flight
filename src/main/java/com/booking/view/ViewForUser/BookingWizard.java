@@ -1,4 +1,4 @@
-package com.booking.view.ViewForUser;
+package com.booking.View.ViewForUser;
 
 import com.booking.controller.Regex.DateRegex;
 

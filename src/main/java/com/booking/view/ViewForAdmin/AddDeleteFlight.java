@@ -1,4 +1,4 @@
-package com.booking.view.ViewForAdmin;
+package com.booking.View.ViewForAdmin;
 
 import com.booking.controller.LogicForAdmin.LogicListFlight;
 
@@ -13,7 +13,7 @@ public class AddDeleteFlight {
         System.out.println("*******************************");
         Scanner sc = new Scanner(System.in);
         LogicListFlight logicListFlight= new LogicListFlight();
-        MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+        com.booking.View.ViewForAdmin.MenuOptionAdmin menuOptionAdmin = new com.booking.View.ViewForAdmin.MenuOptionAdmin();
         System.out.print("Nhập lựa chọn : ");
         int n = sc.nextInt();
         switch (n){

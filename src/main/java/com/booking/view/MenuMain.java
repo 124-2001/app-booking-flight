@@ -1,4 +1,4 @@
-package com.booking.view;
+package com.booking.View;
 
 import java.util.Scanner;
 
@@ -9,11 +9,9 @@ public class MenuMain {
         System.out.println("1) Đăng nhập");
         System.out.println("2) Đăng ký");
         System.out.println("3) Thoát chương trình");
-        System.out.println("******************************");
-        System.out.println("NHẬP LỰA CHỌN : ");
-        System.out.println("3) Thoát");
         System.out.println("****************************************");
-        System.out.println("Nhập lựa chọn : ");
+        System.out.println("NHẬP LỰA CHỌN : ");
+
         int n = sc.nextInt();
         switch (n){
             case 1:
@@ -21,7 +19,7 @@ public class MenuMain {
                 sign.signIn();
                 break;
             case 2:
-                Register register = new Register();
+                com.booking.view.Register register = new com.booking.view.Register();
                 register.register();
                 break;
             case 3:

@@ -1,4 +1,4 @@
-package com.booking.view.ViewForAdmin;
+package com.booking.View.ViewForAdmin;
 
 public class NotificationVoucherFlight {
     public void MakeVoucher(){

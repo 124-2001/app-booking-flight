@@ -1,7 +1,7 @@
 package com.booking.View;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
 import com.booking.controller.LogicAccount.CheckAccount;
-import com.booking.controller.regex.*;
+import com.booking.controller.Regex.EmailRegex;
 import java.util.Scanner;
 
 public class SignIn {
@@ -17,19 +17,16 @@ public class SignIn {
         }
         System.out.print("Mật khẩu: ");
         String tempPassword = scan.nextLine();
-        while (!CheckAccount.CheckUserPassword(tempEmail,tempPassword)){
+        if (!CheckAccount.CheckUserPassword(tempEmail,tempPassword)){
             System.out.println("Nhập sai vui lòng nhập lại ");
-            System.out.print("Địa chỉ email: ");
-            tempEmail = scan.nextLine();
-            while (EmailRegex.emailRegex(tempEmail)) {
-                System.out.println("Địa chỉ email chưa đúng định dạng. Vui lòng thử lại.");
-                System.out.print("Địa chỉ email: ");
-                tempEmail = scan.nextLine();
-            }
-            System.out.print("Mật khẩu: ");
-            tempPassword = scan.nextLine();
+            MenuMain menuMain = new MenuMain();
+            menuMain.DisplayMain();
         }
-        MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
-        menuOptionAdmin.MenuOptionAdmin();
+        else {
+            MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+            menuOptionAdmin.MenuOptionAdmin();
+        }
+
+
     }
 }

@@ -1,4 +1,4 @@
-package com.booking.view.ViewForUser;
+package com.booking.View.ViewForUser;
 
 import java.util.Scanner;
 
@@ -15,19 +15,19 @@ public class MenuOptionUser {
         int n = scan.nextInt();
         switch (n) {
             case 1 -> {
-                BookingWizard book = new BookingWizard();
+                com.booking.View.ViewForUser.BookingWizard book = new com.booking.View.ViewForUser.BookingWizard();
                 book.bookingWizard();
             }
             case 2 -> {
-                Notifications notifs = new Notifications();
+                com.booking.View.ViewForUser.Notifications notifs = new com.booking.View.ViewForUser.Notifications();
                 notifs.notifications();
             }
             case 3 -> {
-                DisplayFlights flights = new DisplayFlights();
+                com.booking.View.ViewForUser.DisplayFlights flights = new com.booking.View.ViewForUser.DisplayFlights();
                 flights.displayFlights();
             }
             case 4 -> {
-                DisplayInfo info = new DisplayInfo();
+                com.booking.View.ViewForUser.DisplayInfo info = new com.booking.View.ViewForUser.DisplayInfo();
                 info.displayInfo();
             }
         }

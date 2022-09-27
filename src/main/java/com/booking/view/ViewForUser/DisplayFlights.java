@@ -1,4 +1,4 @@
-package com.booking.view.ViewForUser;
+package com.booking.View.ViewForUser;
 
 public class DisplayFlights {
     public void displayFlights() {

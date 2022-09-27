@@ -1,5 +1,6 @@
-package com.booking.view.ViewForAdmin;
+package com.booking.View.ViewForAdmin;
 
+import com.booking.View.ViewForAdmin.AddDeleteFlight;
 import com.booking.controller.LogicForAdmin.LogicListFlight;
 
 import java.util.Scanner;
