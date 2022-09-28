@@ -40,7 +40,7 @@ public class LogicFile {
 
         // Đọc dữ liệu từ File với File và FileReader
         File file = new File(url);
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        BufferedReader reader = new BufferedReader(new FileReader(file)); 
         try {
             String json = reader.readLine();
             while (json != null) {

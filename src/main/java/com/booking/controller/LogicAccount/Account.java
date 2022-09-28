@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-     List<User> userList = new ArrayList<>();
      String url="list_user.txt";
+     LogicFile logicFile = new LogicFile();
+     LogicJson logicJson = new LogicJson();
+     List<User> userList = new ArrayList<>();
+
+
     public boolean CheckUserPassword(String email, String passWord){
         for (User user : userList) {
             if(user.getEmail().equalsIgnoreCase(email)&& user.getPassWord().equalsIgnoreCase(passWord)){
@@ -32,8 +36,6 @@ public class Account {
         user.setEmail(email);
         user.setPassWord(passWord);
         user.setPosition_id(perm);
-        LogicFile logicFile = new LogicFile();
-        LogicJson logicJson = new LogicJson();
         logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(user),url);
     }
 }
