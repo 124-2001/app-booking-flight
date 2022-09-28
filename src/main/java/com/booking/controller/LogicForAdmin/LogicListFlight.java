@@ -12,6 +12,8 @@ import java.util.concurrent.LinkedTransferQueue;
 
 public class LogicListFlight {
     List<Flight> flights = new ArrayList<>();
+
+    String url = "list_file.txt";
     Scanner sc = new Scanner(System.in);
 
     public boolean CheckListFlightNull(){

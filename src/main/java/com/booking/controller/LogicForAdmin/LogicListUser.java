@@ -8,6 +8,7 @@ import java.util.List;
 public class LogicListUser {
     List<User> users= new ArrayList<>();
 
+    String url="list_user.txt";
     public boolean CheckListUserNull(){
         if(users.size()==0){
             return true;

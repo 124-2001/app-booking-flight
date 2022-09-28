@@ -8,6 +8,7 @@ import com.booking.controller.Regex.*;
 public class Register {
     public void register() {
         Scanner scan = new Scanner (System.in);
+        Account account = new Account();
         System.out.println("***** Đăng ký tài khoản người dùng *****");
         int tempPerm = 1; //nếu là 0 => admin  1=> user  2=> guest
 
@@ -19,7 +20,7 @@ public class Register {
             System.out.print("Địa chỉ email: ");
             tempEmail = scan.nextLine();
         }
-        while (!Account.CheckEmailIsExist(tempEmail)){
+        while (!account.CheckEmailIsExist(tempEmail)){
             System.out.println("Email tồn tại vui lòng nhập lại : ");
             tempEmail = scan.nextLine();
             while (EmailRegex.emailRegex(tempEmail)) {
@@ -40,7 +41,7 @@ public class Register {
             System.out.print("Mật khẩu: ");
             tempPassword = scan.nextLine();
         }
-        Account.AddAccount(tempEmail,tempPassword,tempPerm);
+        account.AddAccount(tempEmail,tempPassword,tempPerm);
         System.out.println("Đăng ký tài khoản người dùng thành công");
         MenuMain menuMain = new MenuMain();
         menuMain.DisplayMain();

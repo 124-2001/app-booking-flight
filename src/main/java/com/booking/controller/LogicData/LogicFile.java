@@ -3,9 +3,11 @@ package com.booking.controller.LogicData;
 import com.google.gson.Gson;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogicFile {
-    public void WriteFile(String json,String url){
+    public void WriteStringJsonToFile(String json,String url){
         BufferedWriter bw = null;
         FileWriter fw = null;
         try {
@@ -32,16 +34,19 @@ public class LogicFile {
             }
         }
     }
-    public void ReadFile(Object object,String url) throws FileNotFoundException {
-        Gson gson = new Gson();
+    public List<Object> ReadFileAndAddToObject(Object object, String url) throws FileNotFoundException {
+        LogicJson logicJson = new LogicJson();
+        List<Object> objects = new ArrayList<>();
+
         // Đọc dữ liệu từ File với File và FileReader
         File file = new File(url);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         try {
-            String line = reader.readLine();
-            while (line != null) {
-                object = gson.fromJson(line,Object.class);
-                line = reader.readLine();
+            String json = reader.readLine();
+            while (json != null) {
+                object = logicJson.ConvertStringJsonToObject(json,Object.class);
+                objects.add(object);
+                json = reader.readLine();
             }
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
@@ -52,5 +57,7 @@ public class LogicFile {
             } catch (IOException ex) {
             }
         }
+        return objects;
     }
+
 }

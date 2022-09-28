@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class SignIn {
     public void signIn() {
         Scanner scan = new Scanner (System.in);
+        Account account = new Account();
         System.out.println("Đăng nhập");
         System.out.print("Địa chỉ email: ");
         String tempEmail = scan.nextLine();
@@ -17,7 +18,7 @@ public class SignIn {
         }
         System.out.print("Mật khẩu: ");
         String tempPassword = scan.nextLine();
-        if (!Account.CheckUserPassword(tempEmail,tempPassword)){
+        if (!account.CheckUserPassword(tempEmail,tempPassword)){
             System.out.println("Nhập sai vui lòng đăng nhập lại ");
             MenuMain menuMain = new MenuMain();
             menuMain.DisplayMain();
