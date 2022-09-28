@@ -4,6 +4,20 @@ public class Booking {
     private String codeBooking;
     private int codeVoucher;
 
+    private String notification;
+
+    public void SendNotification(){
+        System.out.println("");
+    }
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
+
     public String getCodeBooking() {
         return codeBooking;
     }

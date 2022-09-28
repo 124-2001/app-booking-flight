@@ -1,5 +1,6 @@
 package com.booking.controller.LogicForAdmin;
 
+import com.booking.model.Flight;
 import com.booking.model.Voucher;
 
 import java.util.ArrayList;
@@ -7,7 +8,12 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class LogicVoucher {
+public class LogicNotificationAndVoucher {
+    //NOTIFICATION
+    public void SendNotificationCancelFlight(){
+
+    }
+    //VOUCHER
     List<Voucher> vouchers = new ArrayList<>();
 
     public String RandomVoucher(){
@@ -44,5 +50,10 @@ public class LogicVoucher {
         vouchers.add(voucher);
         System.out.println("Tạo mã voucher thành công !");
         //trở về màn hình ...
+    }
+    public void VoucherPayment(Flight flight, Voucher voucher){
+        if(CheckVoucherIsExist(voucher.getVoucherCode())){
+            flight.setPrice(flight.getPrice()*((100-voucher.getValueVoucher())/100));
+        }
     }
 }

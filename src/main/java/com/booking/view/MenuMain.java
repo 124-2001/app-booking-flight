@@ -19,7 +19,7 @@ public class MenuMain {
                 sign.signIn();
                 break;
             case 2:
-                com.booking.view.Register register = new com.booking.view.Register();
+                Register register = new Register();
                 register.register();
                 break;
             case 3:

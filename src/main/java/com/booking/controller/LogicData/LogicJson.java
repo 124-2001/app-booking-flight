@@ -1,4 +1,4 @@
-package com.booking.controller.LogicJson;
+package com.booking.controller.LogicData;
 
 import com.google.gson.Gson;
 

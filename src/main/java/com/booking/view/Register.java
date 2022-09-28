@@ -1,6 +1,8 @@
-package com.booking.view;
+package com.booking.View;
 
 import java.util.Scanner;
+
+import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.Regex.*;
 
 public class Register {
@@ -11,12 +13,21 @@ public class Register {
 
         System.out.print("Địa chỉ email: ");
         String tempEmail = scan.nextLine();
+
         while (EmailRegex.emailRegex(tempEmail)) {
             System.out.println("Địa chỉ email chưa đúng định dạng. Vui lòng thử lại.");
             System.out.print("Địa chỉ email: ");
             tempEmail = scan.nextLine();
         }
-
+        while (!Account.CheckEmailIsExist(tempEmail)){
+            System.out.println("Email tồn tại vui lòng nhập lại : ");
+            tempEmail = scan.nextLine();
+            while (EmailRegex.emailRegex(tempEmail)) {
+                System.out.println("Địa chỉ email chưa đúng định dạng. Vui lòng thử lại.");
+                System.out.print("Địa chỉ email: ");
+                tempEmail = scan.nextLine();
+            }
+        }
         System.out.print("Mật khẩu: ");
         String tempPassword = scan.nextLine();
         while (PasswordRegex.passwordRegex(tempPassword)) {
@@ -29,5 +40,9 @@ public class Register {
             System.out.print("Mật khẩu: ");
             tempPassword = scan.nextLine();
         }
+        Account.AddAccount(tempEmail,tempPassword,tempPerm);
+        System.out.println("Đăng ký tài khoản người dùng thành công");
+        MenuMain menuMain = new MenuMain();
+        menuMain.DisplayMain();
     }
 }

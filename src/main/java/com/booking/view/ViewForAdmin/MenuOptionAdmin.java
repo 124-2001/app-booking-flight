@@ -1,12 +1,19 @@
 package com.booking.View.ViewForAdmin;
 
+import com.booking.View.MenuMain;
 import com.booking.View.ViewForAdmin.AddDeleteFlight;
 import com.booking.controller.LogicForAdmin.LogicListFlight;
+import com.booking.controller.LogicForAdmin.LogicListUser;
 
 import java.util.Scanner;
 
 public class MenuOptionAdmin {
     public void MenuOptionAdmin(){
+        LogicListUser logicListUser = new LogicListUser();
+        AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+        LogicListFlight logicListFlight= new LogicListFlight();
+        NotificationVoucherFlight notificationVoucherFlight= new NotificationVoucherFlight();
+        MenuMain menuMain = new MenuMain();
         System.out.println("********MENU ADMIN********");
         System.out.println("1) Thêm , hủy chuyến bay ");
         System.out.println("2) Sửa thông tin chuyến bay ");
@@ -18,14 +25,28 @@ public class MenuOptionAdmin {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập lựa chọn: ");
         int n = sc.nextInt();
+        while (n<0||n>6){
+            System.out.print("Nhập lại : ");
+            n = sc.nextInt();
+        }
         switch (n){
             case 1:
-                AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
                 addDeleteFlight.AddDeleteFlight();
                 break;
             case 2:
-                LogicListFlight logicListFlight= new LogicListFlight();
                 logicListFlight.ChangeFlight();
+                break;
+            case 3:
+                logicListUser.ShowListUser();
+                break;
+            case 4:
+                logicListFlight.ShowListFlight();
+                break;
+            case 5:
+                notificationVoucherFlight.ViewNotificationVoucher();
+                break;
+            case 6:
+                menuMain.DisplayMain();
                 break;
         }
 

@@ -1,6 +1,6 @@
 package com.booking.View;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
-import com.booking.controller.LogicAccount.CheckAccount;
+import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.Regex.EmailRegex;
 import java.util.Scanner;
 
@@ -17,12 +17,13 @@ public class SignIn {
         }
         System.out.print("Mật khẩu: ");
         String tempPassword = scan.nextLine();
-        if (!CheckAccount.CheckUserPassword(tempEmail,tempPassword)){
-            System.out.println("Nhập sai vui lòng nhập lại ");
+        if (!Account.CheckUserPassword(tempEmail,tempPassword)){
+            System.out.println("Nhập sai vui lòng đăng nhập lại ");
             MenuMain menuMain = new MenuMain();
             menuMain.DisplayMain();
         }
         else {
+            // dùng phân quyên để check admin hay user
             MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
             menuOptionAdmin.MenuOptionAdmin();
         }
