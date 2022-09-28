@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedTransferQueue;
 public class LogicListFlight {
     List<Flight> flights = new ArrayList<>();
 
-    String url = "list_file.txt";
+    String url = "list_filght.txt";
     Scanner sc = new Scanner(System.in);
 
     public boolean CheckListFlightNull(){
@@ -70,8 +70,8 @@ public class LogicListFlight {
         flights.add(flight);
         System.out.println("Chuyến bay được thêm thành công");
         // sau đó trở về màn hình
-        NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
-        notificationVoucherFlight.ViewNotificationVoucher();
+        MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+        menuOptionAdmin.MenuOptionAdmin();
 
     }
 
@@ -129,8 +129,8 @@ public class LogicListFlight {
             String flightCode = sc.nextLine();
             if(!CheckListFightCodeIsExist(flightCode)){
                 System.out.println("Mã chuyến bay không tồn tại .");
-                NotificationVoucherFlight notificationVoucherFlight= new NotificationVoucherFlight();
-                notificationVoucherFlight.ViewNotificationVoucher();
+                MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+                menuOptionAdmin.MenuOptionAdmin();
             }
             for (Flight flight : flights) {
                 if(flight.getFlightCode().equalsIgnoreCase(flightCode)){
@@ -150,8 +150,8 @@ public class LogicListFlight {
                     int seats = sc.nextInt();
                     flight.setNumberOfSeats(seats);
                     System.out.println("Sửa thông tin thành công . ");
-                    NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
-                    notificationVoucherFlight.ViewNotificationVoucher();
+                    MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+                    menuOptionAdmin.MenuOptionAdmin();
                 }
             }
         }

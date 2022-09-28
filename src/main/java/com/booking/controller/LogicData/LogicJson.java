@@ -1,5 +1,6 @@
 package com.booking.controller.LogicData;
 
+import com.booking.model.Flight;
 import com.google.gson.Gson;
 
 public class LogicJson {
@@ -8,9 +9,9 @@ public class LogicJson {
         String json = gson.toJson(object);
         return json;
     }
-    public Object ConvertStringJsonToObject(String json,Object object){
+    public Object ConvertStringJsonToObject(String json, Flight object){
         Gson gson = new Gson();
-        object = gson.fromJson(json,Object.class);
+        object = gson.fromJson(json,Flight.class);
         return object;
     }
 }

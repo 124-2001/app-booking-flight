@@ -13,7 +13,7 @@ public class AddDeleteFlight {
         System.out.println("*******************************");
         Scanner sc = new Scanner(System.in);
         LogicListFlight logicListFlight= new LogicListFlight();
-        com.booking.View.ViewForAdmin.MenuOptionAdmin menuOptionAdmin = new com.booking.View.ViewForAdmin.MenuOptionAdmin();
+        com.booking.view.ViewForAdmin.MenuOptionAdmin menuOptionAdmin = new com.booking.view.ViewForAdmin.MenuOptionAdmin();
         System.out.print("Nhập lựa chọn : ");
         int n = sc.nextInt();
         switch (n){

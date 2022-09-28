@@ -1,5 +1,6 @@
 package com.booking.controller.LogicData;
 
+import com.booking.model.Flight;
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -34,7 +35,7 @@ public class LogicFile {
             }
         }
     }
-    public List<Object> ReadFileAndAddToObject(Object object, String url) throws FileNotFoundException {
+    public List<Object> ReadFileAndAddToObject(Object object, String url) {
         LogicJson logicJson = new LogicJson();
         List<Object> objects = new ArrayList<>();
 
@@ -57,7 +58,7 @@ public class LogicFile {
             } catch (IOException ex) {
             }
         }
-        return objects;
+
     }
 
 }

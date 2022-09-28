@@ -17,7 +17,7 @@ public class Account {
 
     public boolean CheckUserPassword(String email, String passWord){
         for (User user : userList) {
-            if(user.getEmail().equalsIgnoreCase(email)&& user.getPassWord().equalsIgnoreCase(passWord)){
+            if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().toLowerCase().equalsIgnoreCase(passWord)){
                return true;
             }
         }

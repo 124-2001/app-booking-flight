@@ -1,14 +1,17 @@
 package com.booking.controller.LogicForAdmin;
 
+import com.booking.controller.LogicData.LogicFile;
 import com.booking.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LogicListUser {
-    List<User> users= new ArrayList<>();
 
     String url="list_user.txt";
+    List<User> users= new ArrayList<>();
+
+
     public boolean CheckListUserNull(){
         if(users.size()==0){
             return true;
