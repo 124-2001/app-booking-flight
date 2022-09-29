@@ -1,7 +1,7 @@
 package com.booking.controller.LogicForUser;
 
 public class DateAnalysis {
-    public int[] dateAnalysis(String input) {
+    public int[] dateToInt(String input) {
         int slash1, slash2;
         slash1 = slash2 = 0;
         for (int i = 0; i < input.length(); i++) {

@@ -3,7 +3,6 @@ package com.booking.View.ViewForUser;
 import com.booking.controller.LogicForUser.*;
 import com.booking.controller.Regex.DateRegex;
 import java.util.Scanner;
-import java.util.Calendar;
 
 public class BookingWizard {
     public void bookingWizard() {
@@ -18,13 +17,13 @@ public class BookingWizard {
 
         System.out.print("Ngày bay (dd/mm/yyyy): ");
         String tempDateQuery = scan.nextLine();
-        while (DateRegex.dateRegex(tempDateQuery)) {
-            System.out.println("Vui lòng nhập ngày bay theo định dạng dd/mm/yyyy");
+        while (DateRegex.dateRegex(tempDateQuery) || DateRegex.realDate(tempDateQuery)) {
+            System.out.println("Vui lòng nhập ngày bay hợp lệ theo định dạng dd/mm/yyyy");
             System.out.print("Ngày bay (dd/mm/yyyy): ");
             tempDateQuery = scan.nextLine();
         }
         DateAnalysis tempVar = new DateAnalysis();
-        int[] tempDate = tempVar.dateAnalysis(tempDateQuery);
+        int[] tempDate = tempVar.dateToInt(tempDateQuery);
 
         LogicListFlight tempQuery = new LogicListFlight();
         tempQuery.SearchFlight(tempFromPlace,tempToPlace,tempDate[0],tempDate[1],tempDate[2]);
