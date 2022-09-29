@@ -67,13 +67,17 @@ public class LogicFile {
         List<Flight> flights = new ArrayList<>();
         Gson gson = new Gson();
         // Đọc dữ liệu từ File với File và FileReader
-        File file = new File("list_user.txt");
+        File file = new File("list_flight.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         try {
             String json = reader.readLine();
             while (json != null) {
                 Flight flight = gson.fromJson(json, Flight.class);
-                flights.add(flight);
+                //với những dòng trống khí sửa hoặc xoá thì next qua dòng tieép để đọc
+                if(json!=null){
+                    flights.add(flight);
+                    json = reader.readLine();
+                }
                 json = reader.readLine();
             }
         } catch (FileNotFoundException ex) {
@@ -86,6 +90,32 @@ public class LogicFile {
             }
         }
         return flights;
+    }
+
+    public void DeleteObjectInFile(Flight flight) throws FileNotFoundException {
+        Gson gson = new Gson();
+        LogicJson logicJson = new LogicJson();
+        // Đọc dữ liệu từ File với File và FileReader
+        File file = new File("list_flight.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+
+        try {
+            String json = reader.readLine();
+            while (json != null) {
+                if(json==logicJson.ConvertObjectToStringJson(flight)){
+                    json="";
+
+                }
+            }
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        } finally {
+            try {
+                reader.close();
+                // file.close();
+            } catch (IOException ex) {
+            }
+        }
     }
 
 }

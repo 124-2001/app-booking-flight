@@ -1,12 +1,15 @@
 package com.booking.controller.LogicForAdmin;
 
+import com.booking.View.ViewForAdmin.AddDeleteFlight;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
 import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
 import com.booking.controller.LogicData.LogicFile;
+import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.Flight;
 import com.booking.model.User;
+import com.google.gson.Gson;
 
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +19,7 @@ import java.util.concurrent.LinkedTransferQueue;
 public class LogicListFlight {
 
     LogicFile logicFile = new LogicFile();
+    LogicJson logicJson= new LogicJson();
 
     Scanner sc = new Scanner(System.in);
 
@@ -29,10 +33,13 @@ public class LogicListFlight {
 
     public boolean CheckListFightCodeIsExist(String FlightCode) throws FileNotFoundException {
         List<Flight> flights= logicFile.ConvertFileToFlight();
-        for (Flight flight : flights) {
-            if(flight.getFlightCode().equalsIgnoreCase(FlightCode)){
-                return true;
+        if(flights!=null){
+            for (Flight flight : flights) {
+                if(flight.getFlightCode().equalsIgnoreCase(FlightCode)){
+                    return true;
+                }
             }
+            return false;
         }
         return false;
     }
@@ -48,7 +55,7 @@ public class LogicListFlight {
     }
 
     public void AddFlight() throws FileNotFoundException {
-        List<Flight> flights= logicFile.ConvertFileToFlight();
+       // List<Flight> flights= logicFile.ConvertFileToFlight();
         Flight flight = new Flight();
         System.out.println("*****THÊM CHUYẾN BAY*****");
         // Random mã flight code
@@ -73,7 +80,8 @@ public class LogicListFlight {
         int seats = sc.nextInt();
         flight.setNumberOfSeats(seats);
         System.out.println("*************************");
-        flights.add(flight);
+        //flights.add(flight);
+        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(flight),"list_flight.txt");
         System.out.println("Chuyến bay được thêm thành công");
         // sau đó trở về màn hình
         MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
@@ -111,6 +119,8 @@ public class LogicListFlight {
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
+            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+            addDeleteFlight.AddDeleteFlight();
         }
         else {
             System.out.println("*******LIST CÁC CHUYẾN BAY*******");
@@ -123,6 +133,8 @@ public class LogicListFlight {
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
                 System.out.println("*****************************************");
             }
+            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+            addDeleteFlight.AddDeleteFlight();
         }
     }
     public void ChangeFlight() throws FileNotFoundException {
@@ -143,6 +155,31 @@ public class LogicListFlight {
             }
             for (Flight flight : flights) {
                 if(flight.getFlightCode().equalsIgnoreCase(flightCode)){
+
+                    Gson gson = new Gson();
+                    // Đọc dữ liệu từ File với File và FileReader
+                    File file = new File("list_flight.txt");
+                    BufferedReader reader = new BufferedReader(new FileReader(file));
+                    try {
+                        String json = reader.readLine();
+                        while (json != null) {
+                             flight = gson.fromJson(json, Flight.class);
+                            //với những dòng trống khí sửa hoặc xoá thì next qua dòng tieép để đọc
+                            if(json!=null){
+                                flights.add(flight);
+                                json = reader.readLine();
+                            }
+                            json = reader.readLine();
+                        }
+                    } catch (FileNotFoundException ex) {
+                    } catch (IOException ex) {
+                    } finally {
+                        try {
+                            reader.close();
+                            // file.close();
+                        } catch (IOException ex) {
+                        }
+                    }
                     System.out.println("Nhập tên chuyến bay : ");
                     String flightName = sc.nextLine();
                     flight.setFlightName(flightName);

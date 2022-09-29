@@ -5,26 +5,31 @@ import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.User;
 import com.google.gson.Gson;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-     String url="list_user.txt";
+
      LogicFile logicFile = new LogicFile();
+
      LogicJson logicJson = new LogicJson();
-     List<User> userList = new ArrayList<>();
 
 
-    public boolean CheckUserPassword(String email, String passWord){
-        for (User user : userList) {
+
+
+    public boolean CheckUserPassword(String email, String passWord) throws FileNotFoundException {
+        List<User> users= logicFile.ConvertFileToUser();
+        for (User user : users) {
             if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().toLowerCase().equalsIgnoreCase(passWord)){
                return true;
             }
         }
         return false;
     }
-    public boolean CheckEmailIsExist(String email){
-        for (User user : userList) {
+    public boolean CheckEmailIsExist(String email) throws FileNotFoundException {
+        List<User> users= logicFile.ConvertFileToUser();
+        for (User user : users) {
             if(user.getEmail().equalsIgnoreCase(email)){
                 return false;
             }
@@ -36,6 +41,6 @@ public class Account {
         user.setEmail(email);
         user.setPassWord(passWord);
         user.setPosition_id(perm);
-        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(user),url);
+        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(user),"list_user.txt");
     }
 }

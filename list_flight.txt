@@ -1,0 +1,1 @@
+{"flightCode":"D76AY","flightName":"HN-HCM","fromPlace":"HN","toPlace":"HCM","price":500000,"numberOfSeats":50}
