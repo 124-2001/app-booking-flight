@@ -5,10 +5,11 @@ import com.booking.View.ViewForAdmin.AddDeleteFlight;
 import com.booking.controller.LogicForAdmin.LogicListFlight;
 import com.booking.controller.LogicForAdmin.LogicListUser;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuOptionAdmin {
-    public void MenuOptionAdmin(){
+    public void MenuOptionAdmin() throws FileNotFoundException {
         LogicListUser logicListUser = new LogicListUser();
         AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
         LogicListFlight logicListFlight= new LogicListFlight();

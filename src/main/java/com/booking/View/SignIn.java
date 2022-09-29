@@ -2,10 +2,12 @@ package com.booking.View;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
 import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.Regex.EmailRegex;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class SignIn {
-    public void signIn() {
+    public void signIn() throws FileNotFoundException {
         Scanner scan = new Scanner (System.in);
         Account account = new Account();
         System.out.println("Đăng nhập");

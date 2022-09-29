@@ -1,9 +1,10 @@
 package com.booking.View;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuMain {
-    public void DisplayMain(){
+    public void DisplayMain() throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
         System.out.println("****************************************");
         System.out.println("1) Đăng nhập");

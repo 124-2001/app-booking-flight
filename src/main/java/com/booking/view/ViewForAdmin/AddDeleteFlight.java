@@ -2,10 +2,11 @@ package com.booking.View.ViewForAdmin;
 
 import com.booking.controller.LogicForAdmin.LogicListFlight;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class AddDeleteFlight {
-    public void AddDeleteFlight(){
+    public void AddDeleteFlight() throws FileNotFoundException {
         System.out.println("***** THÊM HỦY CHUYẾN BAY *****");
         System.out.println("1) Thêm chuyến bay");
         System.out.println("2) Hủy chuyến bay");

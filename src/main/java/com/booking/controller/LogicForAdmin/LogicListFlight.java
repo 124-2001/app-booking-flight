@@ -2,8 +2,11 @@ package com.booking.controller.LogicForAdmin;
 
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
 import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
+import com.booking.controller.LogicData.LogicFile;
 import com.booking.model.Flight;
+import com.booking.model.User;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,19 +14,21 @@ import java.util.Scanner;
 import java.util.concurrent.LinkedTransferQueue;
 
 public class LogicListFlight {
-    List<Flight> flights = new ArrayList<>();
 
-    String url = "list_filght.txt";
+    LogicFile logicFile = new LogicFile();
+
     Scanner sc = new Scanner(System.in);
 
-    public boolean CheckListFlightNull(){
+    public boolean CheckListFlightNull() throws FileNotFoundException {
+        List<Flight> flights= logicFile.ConvertFileToFlight();
         if(flights.size()==0){
             return true;
         }
         return false;
     }
 
-    public boolean CheckListFightCodeIsExist(String FlightCode){
+    public boolean CheckListFightCodeIsExist(String FlightCode) throws FileNotFoundException {
+        List<Flight> flights= logicFile.ConvertFileToFlight();
         for (Flight flight : flights) {
             if(flight.getFlightCode().equalsIgnoreCase(FlightCode)){
                 return true;
@@ -42,7 +47,8 @@ public class LogicListFlight {
         return ramdomFlightCode;
     }
 
-    public void AddFlight(){
+    public void AddFlight() throws FileNotFoundException {
+        List<Flight> flights= logicFile.ConvertFileToFlight();
         Flight flight = new Flight();
         System.out.println("*****THÊM CHUYẾN BAY*****");
         // Random mã flight code
@@ -75,7 +81,8 @@ public class LogicListFlight {
 
     }
 
-    public void CancelFlight(){
+    public void CancelFlight() throws FileNotFoundException {
+        List<Flight> flights= logicFile.ConvertFileToFlight();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
@@ -99,7 +106,8 @@ public class LogicListFlight {
         }
     }
 
-    public void ShowListFlight(){
+    public void ShowListFlight() throws FileNotFoundException {
+        List<Flight> flights= logicFile.ConvertFileToFlight();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
@@ -117,7 +125,8 @@ public class LogicListFlight {
             }
         }
     }
-    public void ChangeFlight(){
+    public void ChangeFlight() throws FileNotFoundException {
+        List<Flight> flights= logicFile.ConvertFileToFlight();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
