@@ -1,6 +1,7 @@
 package com.booking.controller.LogicData;
 
 import com.booking.model.Flight;
+import com.booking.model.User;
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -35,18 +36,19 @@ public class LogicFile {
             }
         }
     }
-    public List<Object> ReadFileAndAddToObject(Object object, String url) {
+    //list user
+    public List<User> ReadFileAndAddToObject(User user, String url) throws FileNotFoundException {
         LogicJson logicJson = new LogicJson();
-        List<Object> objects = new ArrayList<>();
-
+        List<User> users = new ArrayList<>();
+        Gson gson = new Gson();
         // Đọc dữ liệu từ File với File và FileReader
         File file = new File(url);
         BufferedReader reader = new BufferedReader(new FileReader(file)); 
         try {
             String json = reader.readLine();
             while (json != null) {
-                object = logicJson.ConvertStringJsonToObject(json,Object.class);
-                objects.add(object);
+                user = gson.fromJson(json,User.class);
+                users.add(user);
                 json = reader.readLine();
             }
         } catch (FileNotFoundException ex) {
