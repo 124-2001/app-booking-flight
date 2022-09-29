@@ -15,19 +15,19 @@ public class MenuOptionUser {
         int n = scan.nextInt();
         switch (n) {
             case 1 -> {
-                com.booking.View.ViewForUser.BookingWizard book = new com.booking.View.ViewForUser.BookingWizard();
+                BookingWizard book = new BookingWizard();
                 book.bookingWizard();
             }
             case 2 -> {
-                com.booking.View.ViewForUser.Notifications notifs = new com.booking.View.ViewForUser.Notifications();
+                Notifications notifs = new Notifications();
                 notifs.notifications();
             }
             case 3 -> {
-                com.booking.View.ViewForUser.DisplayFlights flights = new com.booking.View.ViewForUser.DisplayFlights();
+                DisplayFlights flights = new DisplayFlights();
                 flights.displayFlights();
             }
             case 4 -> {
-                com.booking.View.ViewForUser.DisplayInfo info = new com.booking.View.ViewForUser.DisplayInfo();
+                DisplayInfo info = new DisplayInfo();
                 info.displayInfo();
             }
         }

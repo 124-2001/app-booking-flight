@@ -3,7 +3,7 @@ package com.booking.View;
 import java.util.Scanner;
 
 public class MenuMain {
-    public static void DisplayMain(){
+    public void DisplayMain(){
         Scanner sc = new Scanner(System.in);
         System.out.println("****************************************");
         System.out.println("1) Đăng nhập");
