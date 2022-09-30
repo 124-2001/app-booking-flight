@@ -1,7 +1,8 @@
 package com.booking.controller.LogicForUser;
 
+import java.util.Calendar;
 public class DateAnalysis {
-    public int[] dateToInt(String input) {
+    public static int[] dateToInt(String input) {
         int slash1, slash2;
         slash1 = slash2 = 0;
         for (int i = 0; i < input.length(); i++) {
@@ -19,5 +20,11 @@ public class DateAnalysis {
         date[1] = Integer.parseInt(input.substring(slash1+1,slash2-1)); // Month
         date[2] = Integer.parseInt(input.substring(slash2+1)); // Year
         return date;
+    }
+    public static Calendar dateToCal(String input) {
+        int[] dateInt = dateToInt(input);
+        Calendar dateCal = Calendar.getInstance();
+        dateCal.set(dateInt[2],dateInt[1]-1,dateInt[0]);
+        return dateCal;
     }
 }

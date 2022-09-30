@@ -1,7 +1,6 @@
 package com.booking;
 
 import com.booking.View.MenuMain;
-
 import java.io.FileNotFoundException;
 
 public class BookingFlightApplication {

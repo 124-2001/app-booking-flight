@@ -2,6 +2,8 @@ package com.booking.View.ViewForUser;
 
 import com.booking.controller.LogicForUser.*;
 import com.booking.controller.Regex.DateRegex;
+import com.booking.model.Flight;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookingWizard {
@@ -22,17 +24,25 @@ public class BookingWizard {
             System.out.print("Ngày bay (dd/mm/yyyy): ");
             tempDateQuery = scan.nextLine();
         }
-        DateAnalysis tempVar = new DateAnalysis();
-        int[] tempDate = tempVar.dateToInt(tempDateQuery);
 
-        LogicListFlight tempQuery = new LogicListFlight();
-        tempQuery.SearchFlight(tempFromPlace,tempToPlace,tempDate[0],tempDate[1],tempDate[2]);
+        LogicListFlight tempLLF = new LogicListFlight();
+        ArrayList<Flight> filteredFlights = tempLLF.SearchFlight(tempFromPlace,tempToPlace,tempDateQuery);
 		// Scan list chuyến bay
+        if (filteredFlights.isEmpty()) {
+            System.out.println("Không tìm thấy chuyến bay theo bộ lọc. Đang quay trở về màn hình chính...");
+            return;
+        }
 
+        for (Flight temp: filteredFlights) System.out.println(temp);
         System.out.println("Vui lòng nhập mã chuyến bay mong muốn." +
                 "Nhập 0 để quay trở về màn hình chính.");
-        String tempFlightID = scan.nextLine();
-        if (tempFlightID.equals("0")) return;
-        else {} // Tìm chuyến bay
+        String tempFlightCode = scan.nextLine();
+        if (tempFlightCode.equals("0")) return;
+        Flight booked = tempLLF.confirmFlight(filteredFlights,tempFlightCode);
+
+        // Add variable 'booked' to user's booked flight list
+
+        System.out.println("Chuyến bay " + booked.getFlightCode() + "đặt thành công");
+        System.out.println(booked);
     }
 }

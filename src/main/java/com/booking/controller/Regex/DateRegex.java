@@ -1,7 +1,6 @@
 package com.booking.controller.Regex;
 
 import com.booking.controller.LogicForUser.DateAnalysis;
-
 import java.util.regex.Pattern;
 
 public class DateRegex {
@@ -13,8 +12,28 @@ public class DateRegex {
         return !valid; // Match regex => false => while loop won't be activated
     }
     public static boolean realDate(String inputDate) {
-        DateAnalysis tempVar = new DateAnalysis();
-        int[] analysedDate = tempVar.dateToInt(inputDate);
-        return true;
-    } // unfinished
+        int[] analysedDate = DateAnalysis.dateToInt(inputDate);
+
+        boolean bYear = analysedDate[2] >= 1970 && analysedDate[2] <= 2038;
+        // Year range from 1970 to 2038
+
+        boolean bMonth = analysedDate[1] >= 1 && analysedDate[1] <= 12;
+        // Month range from 1 to 12
+
+        boolean bDay;
+        switch (analysedDate[1]) {
+            case 1, 3, 5, 7, 8, 10, 12 -> bDay = analysedDate[0] >= 1 && analysedDate[0] <= 31;
+            case 4, 6, 9, 11 -> bDay = analysedDate[0] >= 1 && analysedDate[0] <= 30;
+            case 2 -> {
+                if (analysedDate[2] % 4 == 0)
+                    bDay = analysedDate[0] >= 1 && analysedDate[0] <= 29;
+                else bDay = analysedDate[0] >= 1 && analysedDate[0] <= 28;
+            }
+            // Ignore years divisible by 100 but not by 400, since none within 1970-2038 is applicable
+            default -> bDay = false;
+        } // Day range from 1 to 28-31 depending on the month
+
+        boolean valid = bYear && bMonth && bDay;
+        return !valid;
+    }
 }
