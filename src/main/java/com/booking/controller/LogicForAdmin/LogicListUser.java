@@ -56,7 +56,7 @@ public class LogicListUser {
         }
         else {
             for (User user : users) {
-                if (user.getEmail().equalsIgnoreCase(email)){
+                if (user.getEmail().equalsIgnoreCase(email) && user.getPosition_id()==1){
                     users.remove(user);
                     System.out.println("Xóa thành công user : "+email);
                     break;
