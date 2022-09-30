@@ -3,6 +3,7 @@ package com.booking.controller.LogicForAdmin;
 import com.booking.View.ViewForAdmin.AddDeleteFlight;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
 import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
+import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.Flight;
@@ -133,8 +134,8 @@ public class LogicListFlight {
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
                 System.out.println("*****************************************");
             }
-            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
-            addDeleteFlight.AddDeleteFlight();
+            MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+            menuOptionAdmin.MenuOptionAdmin();
         }
     }
     public void ChangeFlight() throws FileNotFoundException {
@@ -154,32 +155,8 @@ public class LogicListFlight {
                 menuOptionAdmin.MenuOptionAdmin();
             }
             for (Flight flight : flights) {
+                // duyệt đến chuyến bay có mã chuyến bay nhập bên trên
                 if(flight.getFlightCode().equalsIgnoreCase(flightCode)){
-
-                    Gson gson = new Gson();
-                    // Đọc dữ liệu từ File với File và FileReader
-                    File file = new File("list_flight.txt");
-                    BufferedReader reader = new BufferedReader(new FileReader(file));
-                    try {
-                        String json = reader.readLine();
-                        while (json != null) {
-                             flight = gson.fromJson(json, Flight.class);
-                            //với những dòng trống khí sửa hoặc xoá thì next qua dòng tieép để đọc
-                            if(json!=null){
-                                flights.add(flight);
-                                json = reader.readLine();
-                            }
-                            json = reader.readLine();
-                        }
-                    } catch (FileNotFoundException ex) {
-                    } catch (IOException ex) {
-                    } finally {
-                        try {
-                            reader.close();
-                            // file.close();
-                        } catch (IOException ex) {
-                        }
-                    }
                     System.out.println("Nhập tên chuyến bay : ");
                     String flightName = sc.nextLine();
                     flight.setFlightName(flightName);
@@ -196,10 +173,14 @@ public class LogicListFlight {
                     int seats = sc.nextInt();
                     flight.setNumberOfSeats(seats);
                     System.out.println("Sửa thông tin thành công . ");
-                    MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
-                    menuOptionAdmin.MenuOptionAdmin();
+                   // MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+                   // menuOptionAdmin.MenuOptionAdmin();
                 }
             }
+            logicFile.DeleteObjectInFile(flights);
+            System.out.println("Done");
+            MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+            menuOptionAdmin.MenuOptionAdmin();
         }
     }
 

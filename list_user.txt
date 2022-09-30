@@ -1,3 +1,3 @@
-{"email":"nam@gmail.com","passWord":"Hh12345@","position_id":1}
+{"email":"nam@gmail.com","passWord":"Hh12345@","position_id":0}
 {"email":"nam1@gmail.com","passWord":"Hh12345@","position_id":1}
 {"email":"Nam@gmail.com","passWord":"Hh12345@","position_id":1}

@@ -27,6 +27,21 @@ public class Account {
         }
         return false;
     }
+
+    public boolean CheckPositionUser(String email,String passWord) throws FileNotFoundException {
+        List<User> users= logicFile.ConvertFileToUser();
+        for (User user : users) {
+            if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().toLowerCase().equalsIgnoreCase(passWord)){
+                if(user.getPosition_id()==0){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
     public boolean CheckEmailIsExist(String email) throws FileNotFoundException {
         List<User> users= logicFile.ConvertFileToUser();
         for (User user : users) {

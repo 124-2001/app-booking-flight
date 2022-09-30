@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuOptionUser {
     public void menuOptionUser() {
-        System.out.println("************** Menu chính **************");
+        System.out.println("**************MENU USER**************");
         System.out.println("1) Đặt vé");
         System.out.println("2) Thông báo");
         System.out.println("3) Chuyến bay");

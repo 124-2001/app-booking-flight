@@ -78,7 +78,9 @@ public class LogicFile {
                     flights.add(flight);
                     json = reader.readLine();
                 }
-                json = reader.readLine();
+                else {
+                    json = reader.readLine();
+                }
             }
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
@@ -92,30 +94,32 @@ public class LogicFile {
         return flights;
     }
 
-    public void DeleteObjectInFile(Flight flight) throws FileNotFoundException {
-        Gson gson = new Gson();
-        LogicJson logicJson = new LogicJson();
-        // Đọc dữ liệu từ File với File và FileReader
-        File file = new File("list_flight.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-
-        try {
-            String json = reader.readLine();
-            while (json != null) {
-                if(json==logicJson.ConvertObjectToStringJson(flight)){
-                    json="";
-
-                }
+    public void DeleteObjectInFile(List<Flight> flights) throws FileNotFoundException {
+        //xoá file cũ
+        try{
+            //Specify the file name and path
+            File file = new File("list_flight.txt");
+            /*the delete() method returns true if the file is
+             * deleted successfully else it returns false
+             */
+            if(file.delete()){
+                System.out.println(file.getName() + " is deleted!");
+            }else{
+                System.out.println("Delete failed: File didn't delete");
             }
-        } catch (FileNotFoundException ex) {
-        } catch (IOException ex) {
-        } finally {
-            try {
-                reader.close();
-                // file.close();
-            } catch (IOException ex) {
-            }
+        }catch(Exception e){
+            System.out.println("Exception occurred");
+            e.printStackTrace();
         }
+        //lấy list mới đổi convert ra dãy mảng chuỗi rồi viết ra file cùng tên file vừa xoá
+        LogicJson logicJson = new LogicJson();
+        for (Flight flight : flights) {
+            String json = logicJson.ConvertObjectToStringJson(flight);
+            WriteStringJsonToFile(json,"list_flight.txt");
+        }
+
+
+        //lấy mảng chuỗi list mới viết ra file mới cùng tên file vừa xoá
     }
 
 }

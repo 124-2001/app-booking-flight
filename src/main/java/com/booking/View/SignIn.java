@@ -1,5 +1,6 @@
 package com.booking.View;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
+import com.booking.View.ViewForUser.MenuOptionUser;
 import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.Regex.EmailRegex;
 
@@ -27,8 +28,14 @@ public class SignIn {
         }
         else {
             // dùng phân quyên để check admin hay user
-            MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
-            menuOptionAdmin.MenuOptionAdmin();
+            if(account.CheckPositionUser(tempEmail,tempPassword)){
+                MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+                menuOptionAdmin.MenuOptionAdmin();
+            }
+            else {
+                MenuOptionUser menuOptionUser = new MenuOptionUser();
+                menuOptionUser.menuOptionUser();
+            }
         }
 
 
