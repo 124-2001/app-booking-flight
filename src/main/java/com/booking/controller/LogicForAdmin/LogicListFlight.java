@@ -101,7 +101,7 @@ public class LogicListFlight {
             String code = sc.nextLine();
             int count =0;
             for (Flight flight : flights) {
-                if(!code.contains(flight.getFlightCode())){
+                if(code.contains(flight.getFlightCode())){
                     flights.remove(flight);
                     logicFile.DeleteFlightInFile(flights);
                     System.out.println("Huỷ chuyến bay thành công !");
@@ -113,6 +113,8 @@ public class LogicListFlight {
                 System.out.println("Không tìm thấy chuyến bay phù hợp . ");
             }
             ///trở về màn hình ...
+            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+            addDeleteFlight.AddDeleteFlight();
         }
     }
 

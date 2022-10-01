@@ -11,12 +11,13 @@ public class NotificationVoucherFlight {
         System.out.println("*******************************");
         System.out.println("1) Gửi thông báo cho người dùng");
         System.out.println("2) Tạo mã Voucher Khuyến Mại");
-        System.out.println("3) Thoát");
+        System.out.println("3) Danh sách Voucher Khuyến Mại");
+        System.out.println("4) Thoát");
         System.out.println("*******************************");
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập lựa chọn: ");
         int n = sc.nextInt();
-        while (n<0||n>3){
+        while (n<0||n>4){
             System.out.print("Nhập lại : ");
             n= sc.nextInt();
         }
@@ -31,6 +32,9 @@ public class NotificationVoucherFlight {
                 logicNotificationAndVoucher.AddVoucher();
                 break;
             case 3:
+                logicNotificationAndVoucher.ShowListVoucher();
+                break;
+            case 4:
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
                 break;
