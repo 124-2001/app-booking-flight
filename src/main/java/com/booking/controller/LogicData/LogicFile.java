@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogicFile {
+
+    // viết 1 chuỗi json ra file
     public void WriteStringJsonToFile(String json,String url){
         BufferedWriter bw = null;
         FileWriter fw = null;
@@ -24,7 +26,6 @@ public class LogicFile {
             fw = new FileWriter(file.getAbsoluteFile(), true);
             bw = new BufferedWriter(fw);
             bw.write(json+"\n");
-            System.out.println("Done");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -38,6 +39,9 @@ public class LogicFile {
             }
         }
     }
+
+    //đọc file chuyển sang list objecct
+
     //list user
     public List<User> ConvertFileToUser() throws FileNotFoundException {
         List<User> users = new ArrayList<>();
@@ -160,6 +164,9 @@ public class LogicFile {
         return bookings;
     }
 
+
+    //xoá file cũ và add file mới thông qua list
+
     public void DeleteFlightInFile(List<Flight> flights) throws FileNotFoundException {
         //xoá file cũ
         try{
@@ -167,7 +174,7 @@ public class LogicFile {
             File file = new File("list_flight.txt");
 
             if(file.delete()){
-                System.out.println(file.getName() + " is deleted!");
+                //System.out.println(file.getName() + " is deleted!");
             }else{
                 System.out.println("Delete failed: File didn't delete");
             }
@@ -190,7 +197,7 @@ public class LogicFile {
             File file = new File("list_user.txt");
 
             if(file.delete()){
-                System.out.println(file.getName() + " is deleted!");
+                //System.out.println(file.getName() + " is deleted!");
             }else{
                 System.out.println("Delete failed: File didn't delete");
             }

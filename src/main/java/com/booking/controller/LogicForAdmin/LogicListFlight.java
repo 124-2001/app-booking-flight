@@ -57,7 +57,6 @@ public class LogicListFlight {
     }
 
     public void AddFlight() throws FileNotFoundException {
-       // List<Flight> flights= logicFile.ConvertFileToFlight();
         Flight flight = new Flight();
         System.out.println("*****THÊM CHUYẾN BAY*****");
         // Random mã flight code

@@ -4,9 +4,10 @@ import com.booking.controller.LogicForUser.LogicUserInfo;
 
 import java.util.Scanner;
 
-import static com.booking.View.SignIn.signedIn;
 
-public class DisplayInfo {
+import static com.booking.View.ViewMain.SignIn.signedIn;
+
+public  class  DisplayInfo {
     public void displayInfo() {
         Scanner scan = new Scanner(System.in);
         String ans = "c";

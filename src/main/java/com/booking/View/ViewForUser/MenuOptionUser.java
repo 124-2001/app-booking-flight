@@ -1,6 +1,6 @@
 package com.booking.View.ViewForUser;
 
-import com.booking.View.MenuMain;
+import com.booking.View.ViewMain.MenuMain;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

@@ -1,3 +1,3 @@
 {"flightCode":"GLJ6N","flightName":"HP-HCM","fromPlace":"HP","toPlace":"HCM","price":690000,"numberOfSeats":60}
-{"flightCode":"F49GC","flightName":"HP-HCM","fromPlace":"HP","toPlace":"HCM","price":70000,"numberOfSeats":60}
 {"flightCode":"E884Y","flightName":"HN-DN","fromPlace":"HN","toPlace":"DN","price":570000,"numberOfSeats":70}
+{"flightCode":"JA365","flightName":"HN-HCM","fromPlace":"HN","toPlace":"HCM","price":800000,"numberOfSeats":80}

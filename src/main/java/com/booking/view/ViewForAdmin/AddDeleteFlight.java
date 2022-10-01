@@ -17,6 +17,10 @@ public class AddDeleteFlight {
         MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
         System.out.print("Nhập lựa chọn : ");
         int n = sc.nextInt();
+        while (n<0 || n>3){
+            System.out.println("Nhập lại lựa chọn :");
+            n = sc.nextInt();
+        }
         switch (n){
             case 1:
                 logicListFlight.AddFlight();
