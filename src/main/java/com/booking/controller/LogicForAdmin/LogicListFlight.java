@@ -44,6 +44,7 @@ public class LogicListFlight {
         }
         return false;
     }
+
     public String RandomFlightCode(){
         String str ="ABCDEFGHYJKQMNL123456789";
         String ramdomFlightCode = "";
@@ -141,6 +142,7 @@ public class LogicListFlight {
             menuOptionAdmin.MenuOptionAdmin();
         }
     }
+
     public void ChangeFlight() throws FileNotFoundException {
         List<Flight> flights= logicFile.ConvertFileToFlight();
         if(CheckListFlightNull()){

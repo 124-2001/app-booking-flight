@@ -1,9 +1,7 @@
 package com.booking.View.ViewForAdmin;
 
-import com.booking.View.MenuMain;
-import com.booking.View.ViewForAdmin.AddDeleteFlight;
+import com.booking.View.ViewMain.MenuMain;
 import com.booking.controller.LogicForAdmin.LogicListFlight;
-import com.booking.controller.LogicForAdmin.LogicListUser;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

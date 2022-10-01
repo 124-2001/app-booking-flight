@@ -1,4 +1,4 @@
-package com.booking.View;
+package com.booking.View.ViewMain;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;

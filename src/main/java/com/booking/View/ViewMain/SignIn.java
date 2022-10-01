@@ -1,10 +1,9 @@
-package com.booking.View;
+package com.booking.View.ViewMain;
 
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
 import com.booking.View.ViewForUser.MenuOptionUser;
 import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.Regex.EmailRegex;
-import com.booking.model.User;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
