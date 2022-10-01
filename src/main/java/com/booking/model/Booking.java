@@ -2,6 +2,7 @@ package com.booking.model;
 
 public class Booking {
     private String codeBooking;
+
     private int codeVoucher;
 
     private String notification;

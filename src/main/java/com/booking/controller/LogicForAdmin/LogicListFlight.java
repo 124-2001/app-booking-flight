@@ -177,7 +177,7 @@ public class LogicListFlight {
                    // menuOptionAdmin.MenuOptionAdmin();
                 }
             }
-            logicFile.DeleteObjectInFile(flights);
+            logicFile.DeleteFlightInFile(flights);
             System.out.println("Done");
             MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
             menuOptionAdmin.MenuOptionAdmin();

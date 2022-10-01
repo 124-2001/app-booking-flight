@@ -13,6 +13,7 @@ public class MenuOptionAdmin {
         LogicListUser logicListUser = new LogicListUser();
         AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
         LogicListFlight logicListFlight= new LogicListFlight();
+        ManagementUser managementUser = new ManagementUser();
         NotificationVoucherFlight notificationVoucherFlight= new NotificationVoucherFlight();
         MenuMain menuMain = new MenuMain();
         System.out.println("********MENU ADMIN********");
@@ -38,7 +39,7 @@ public class MenuOptionAdmin {
                 logicListFlight.ChangeFlight();
                 break;
             case 3:
-                logicListUser.ShowListUser();
+                managementUser.ViewManagement();
                 break;
             case 4:
                 logicListFlight.ShowListFlight();

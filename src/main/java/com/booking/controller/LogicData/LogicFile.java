@@ -2,6 +2,7 @@ package com.booking.controller.LogicData;
 
 import com.booking.model.Flight;
 import com.booking.model.User;
+import com.booking.model.Voucher;
 import com.google.gson.Gson;
 
 import java.io.*;
@@ -94,14 +95,76 @@ public class LogicFile {
         return flights;
     }
 
-    public void DeleteObjectInFile(List<Flight> flights) throws FileNotFoundException {
+    //list voucher
+    public List<Voucher> ConvertFileToVoucher() throws FileNotFoundException {
+        List<Voucher> vouchers = new ArrayList<>();
+        Gson gson = new Gson();
+        // Đọc dữ liệu từ File với File và FileReader
+        File file = new File("list_voucher.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        try {
+            String json = reader.readLine();
+            while (json != null) {
+                Voucher voucher = gson.fromJson(json, Voucher.class);
+                //với những dòng trống khí sửa hoặc xoá thì next qua dòng tieép để đọc
+                if(json!=null){
+                    vouchers.add(voucher);
+                    json = reader.readLine();
+                }
+                else {
+                    json = reader.readLine();
+                }
+            }
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        } finally {
+            try {
+                reader.close();
+                // file.close();
+            } catch (IOException ex) {
+            }
+        }
+        return vouchers;
+    }
+
+    //list booking
+    public List<Voucher> ConvertFileToVoucher() throws FileNotFoundException {
+        List<Voucher> vouchers = new ArrayList<>();
+        Gson gson = new Gson();
+        // Đọc dữ liệu từ File với File và FileReader
+        File file = new File("list_voucher.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        try {
+            String json = reader.readLine();
+            while (json != null) {
+                Voucher voucher = gson.fromJson(json, Voucher.class);
+                //với những dòng trống khí sửa hoặc xoá thì next qua dòng tieép để đọc
+                if(json!=null){
+                    vouchers.add(voucher);
+                    json = reader.readLine();
+                }
+                else {
+                    json = reader.readLine();
+                }
+            }
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        } finally {
+            try {
+                reader.close();
+                // file.close();
+            } catch (IOException ex) {
+            }
+        }
+        return vouchers;
+    }
+
+    public void DeleteFlightInFile(List<Flight> flights) throws FileNotFoundException {
         //xoá file cũ
         try{
             //Specify the file name and path
             File file = new File("list_flight.txt");
-            /*the delete() method returns true if the file is
-             * deleted successfully else it returns false
-             */
+
             if(file.delete()){
                 System.out.println(file.getName() + " is deleted!");
             }else{
@@ -117,9 +180,28 @@ public class LogicFile {
             String json = logicJson.ConvertObjectToStringJson(flight);
             WriteStringJsonToFile(json,"list_flight.txt");
         }
-
-
-        //lấy mảng chuỗi list mới viết ra file mới cùng tên file vừa xoá
     }
 
+    public void DeleteUserInFile(List<User> users) throws FileNotFoundException {
+        //xoá file cũ
+        try{
+            //Specify the file name and path
+            File file = new File("list_user.txt");
+
+            if(file.delete()){
+                System.out.println(file.getName() + " is deleted!");
+            }else{
+                System.out.println("Delete failed: File didn't delete");
+            }
+        }catch(Exception e){
+            System.out.println("Exception occurred");
+            e.printStackTrace();
+        }
+        //lấy list mới đổi convert ra dãy mảng chuỗi rồi viết ra file cùng tên file vừa xoá
+        LogicJson logicJson = new LogicJson();
+        for (User user : users) {
+            String json = logicJson.ConvertObjectToStringJson(user);
+            WriteStringJsonToFile(json,"list_user.txt");
+        }
+    }
 }

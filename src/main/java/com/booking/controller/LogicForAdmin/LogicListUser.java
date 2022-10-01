@@ -1,5 +1,6 @@
 package com.booking.controller.LogicForAdmin;
 
+import com.booking.View.ViewForAdmin.ManagementUser;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.model.User;
 
@@ -34,6 +35,8 @@ public class LogicListUser {
         if(CheckListUserNull()){
             System.out.println("Danh sách người dùng đang rỗng . ");
             //trở về màn hình ...
+            ManagementUser managementUser= new ManagementUser();
+            managementUser.ViewManagement();
         }
         else {
             int count =1;
@@ -44,6 +47,9 @@ public class LogicListUser {
                 System.out.println("--------------------------");
                 count++;
             }
+
+            ManagementUser managementUser= new ManagementUser();
+            managementUser.ViewManagement();
         }
     }
 
@@ -52,17 +58,21 @@ public class LogicListUser {
         if(!CheckUserIsExist(email)){
             System.out.println("Không tìm được user, user không tồn tại . ");
             //trở về màn hình ...
-
+            ManagementUser managementUser = new ManagementUser();
+            managementUser.ViewManagement();
         }
         else {
             for (User user : users) {
                 if (user.getEmail().equalsIgnoreCase(email) && user.getPosition_id()==1){
                     users.remove(user);
+                    logicFile.DeleteUserInFile(users);
                     System.out.println("Xóa thành công user : "+email);
                     break;
                 }
             }
             //trở về màn hình ...
+            ManagementUser managementUser = new ManagementUser();
+            managementUser.ViewManagement();
         }
     }
 }
