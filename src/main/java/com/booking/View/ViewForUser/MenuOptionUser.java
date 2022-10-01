@@ -1,5 +1,8 @@
 package com.booking.View.ViewForUser;
 
+import com.booking.View.MenuMain;
+
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MenuOptionUser {
@@ -9,6 +12,7 @@ public class MenuOptionUser {
         System.out.println("2) Thông báo");
         System.out.println("3) Chuyến bay");
         System.out.println("4) Thông tin tài khoản");
+        System.out.println("5) Đăng xuất");
         System.out.println("****************************************");
         System.out.print("Nhập lựa chọn: ");
         Scanner scan = new Scanner(System.in);
@@ -29,6 +33,14 @@ public class MenuOptionUser {
             case 4 -> {
                 DisplayInfo info = new DisplayInfo();
                 info.displayInfo();
+            }
+            case 5 -> {
+                MenuMain menu = new MenuMain();
+                try {
+                    menu.DisplayMain();
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }

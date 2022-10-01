@@ -13,23 +13,19 @@ public class Register {
         System.out.println("***** Đăng ký tài khoản người dùng *****");
         int tempPerm = 1; //nếu là 0 => admin  1=> user  2=> guest
 
-        System.out.print("Địa chỉ email: ");
-        String tempEmail = scan.nextLine();
-
-        while (EmailRegex.emailRegex(tempEmail)) {
-            System.out.println("Địa chỉ email chưa đúng định dạng. Vui lòng thử lại.");
+        String tempEmail;
+        do {
             System.out.print("Địa chỉ email: ");
-            tempEmail = scan.nextLine();
-        }
-        while (!account.CheckEmailIsExist(tempEmail)){
-            System.out.println("Email tồn tại vui lòng nhập lại : ");
             tempEmail = scan.nextLine();
             while (EmailRegex.emailRegex(tempEmail)) {
                 System.out.println("Địa chỉ email chưa đúng định dạng. Vui lòng thử lại.");
                 System.out.print("Địa chỉ email: ");
                 tempEmail = scan.nextLine();
             }
-        }
+            if (!account.CheckEmailIsExist(tempEmail))
+                System.out.println("Địa chỉ email đã tồn tại. Vui lòng sử dụng email khác.");
+        } while (!account.CheckEmailIsExist(tempEmail));
+
         System.out.print("Mật khẩu: ");
         String tempPassword = scan.nextLine();
         while (PasswordRegex.passwordRegex(tempPassword)) {

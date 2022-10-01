@@ -4,6 +4,8 @@ import com.booking.controller.LogicForUser.LogicUserInfo;
 
 import java.util.Scanner;
 
+import static com.booking.View.SignIn.signedIn;
+
 public class DisplayInfo {
     public void displayInfo() {
         Scanner scan = new Scanner(System.in);
@@ -11,7 +13,7 @@ public class DisplayInfo {
         do {
             if (LogicUserInfo.verifyChoice1(ans)) {
                 System.out.println("******* Quản lý thông tin cá nhân ******");
-                System.out.println("Email: ");
+                System.out.println("Email: " + signedIn.getEmail());
                 System.out.println("Mật khẩu: ********");
             }
             System.out.println("Bạn có muốn thay đổi thông tin? Nhập C nếu có, nhập K nếu không.");
