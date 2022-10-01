@@ -14,7 +14,7 @@ public class MenuMain {
         System.out.println("NHẬP LỰA CHỌN : ");
 
         int n = sc.nextInt();
-        while (n<0&&n>3){
+        while (n<0 || n>3){
             System.out.println("Nhập lại lựa chọn :");
             n = sc.nextInt();
         }

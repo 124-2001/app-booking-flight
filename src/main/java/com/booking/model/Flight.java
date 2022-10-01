@@ -12,6 +12,20 @@ public class Flight {
     private long price;
     private int numberOfSeats;
 
+    public Flight() {
+    }
+
+    public Flight(String flightCode, String flightName, String fromPlace, String toPlace,
+                  Calendar time, long price, int numberOfSeats) {
+        this.flightCode = flightCode;
+        this.flightName = flightName;
+        this.fromPlace = fromPlace;
+        this.toPlace = toPlace;
+        this.time = time;
+        this.price = price;
+        this.numberOfSeats = numberOfSeats;
+    }
+
     public String getFlightCode() {
         return flightCode;
     }

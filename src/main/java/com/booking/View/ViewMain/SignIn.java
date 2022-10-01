@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class SignIn {
+    public static User signedIn = new User ();
     public void signIn() throws FileNotFoundException {
         Scanner scan = new Scanner (System.in);
         Account account = new Account();
@@ -23,17 +24,22 @@ public class SignIn {
         System.out.print("Mật khẩu: ");
         String tempPassword = scan.nextLine();
         if (!account.CheckUserPassword(tempEmail,tempPassword)){
-            System.out.println("Nhập sai vui lòng đăng nhập lại ");
+            System.out.println("Mật khẩu chưa chính xác. Vui lòng đăng nhập lại ");
             MenuMain menuMain = new MenuMain();
             menuMain.DisplayMain();
         }
         else {
+            signedIn.setEmail(tempEmail);
+            signedIn.setPassWord(tempPassword);
             // dùng phân quyên để check admin hay user
+            //nếu là 0 => admin  1=> user  2=> guest
             if(account.CheckPositionUser(tempEmail,tempPassword)){
+                signedIn.setPosition_id(0);
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
             }
             else {
+                signedIn.setPosition_id(1);
                 MenuOptionUser menuOptionUser = new MenuOptionUser();
                 menuOptionUser.menuOptionUser();
             }

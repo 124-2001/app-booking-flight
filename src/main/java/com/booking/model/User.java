@@ -7,6 +7,15 @@ public class User {
     private String passWord;
     private int position_id;  //nếu là 0 => admin  1=> user  2=> guest
 
+    public User() {
+    }
+
+    public User(String email, String passWord, int position_id) {
+        this.email = email;
+        this.passWord = passWord;
+        this.position_id = position_id;
+    }
+
     private String notification;
 
     public String getNotification() {
