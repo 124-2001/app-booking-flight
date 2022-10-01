@@ -101,8 +101,9 @@ public class LogicListFlight {
             String code = sc.nextLine();
             int count =0;
             for (Flight flight : flights) {
-                if(!code.contains(flight.getFlightCode())){
+                if(code.contains(flight.getFlightCode())){
                     flights.remove(flight);
+                    logicFile.DeleteFlightInFile(flights);
                     System.out.println("Huỷ chuyến bay thành công !");
                     count++;
                     break;
@@ -112,6 +113,8 @@ public class LogicListFlight {
                 System.out.println("Không tìm thấy chuyến bay phù hợp . ");
             }
             ///trở về màn hình ...
+            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+            addDeleteFlight.AddDeleteFlight();
         }
     }
 
@@ -173,8 +176,6 @@ public class LogicListFlight {
                     int seats = sc.nextInt();
                     flight.setNumberOfSeats(seats);
                     System.out.println("Sửa thông tin thành công . ");
-                   // MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
-                   // menuOptionAdmin.MenuOptionAdmin();
                 }
             }
             logicFile.DeleteFlightInFile(flights);

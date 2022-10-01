@@ -1,9 +1,13 @@
 package com.booking.model;
 
-public class Booking {
+public class Booking extends Flight {
     private String userEmail;
     private String flightCode;
     private int voucherCode;
+    private String codeBooking; //
+
+    private int codeVoucher;
+
     private String notification;
 
     public Booking() {
@@ -45,7 +49,6 @@ public class Booking {
     public void setVoucherCode(int voucherCode) {
         this.voucherCode = voucherCode;
     }
-
     public String getNotification() {
         return notification;
     }
@@ -54,7 +57,23 @@ public class Booking {
         this.notification = notification;
     }
 
-    public void sendNotification(){
+    public void sendNotification() {
         System.out.println("");
+    }
+
+    public String getCodeBooking() {
+        return codeBooking;
+    }
+
+    public void setCodeBooking(String codeBooking) {
+        this.codeBooking = codeBooking;
+    }
+
+    public int getCodeVoucher() {
+        return codeVoucher;
+    }
+
+    public void setCodeVoucher(int codeVoucher) {
+        this.codeVoucher = codeVoucher;
     }
 }

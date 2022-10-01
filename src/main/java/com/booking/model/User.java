@@ -1,5 +1,7 @@
 package com.booking.model;
 
+import java.util.List;
+
 public class User {
     private String email;
     private String passWord;
@@ -12,6 +14,16 @@ public class User {
         this.email = email;
         this.passWord = passWord;
         this.position_id = position_id;
+    }
+
+    private String notification;
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
     }
 
     public String getEmail() {

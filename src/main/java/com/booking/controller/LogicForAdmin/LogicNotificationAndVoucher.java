@@ -1,9 +1,11 @@
 package com.booking.controller.LogicForAdmin;
 
 import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
+import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.Flight;
+import com.booking.model.User;
 import com.booking.model.Voucher;
 
 import java.io.FileNotFoundException;
@@ -16,9 +18,34 @@ public class LogicNotificationAndVoucher {
 
     LogicJson logicJson = new LogicJson();
     LogicFile logicFile = new LogicFile();
-    //NOTIFICATION
-    public void SendNotificationCancelFlight(){
 
+    Scanner sc = new Scanner(System.in);
+    Account account= new Account();
+
+    //NOTIFICATION
+    public void SendNotificationCancelFlight(String email) throws FileNotFoundException {
+        //clone list user
+        List<User> users= logicFile.ConvertFileToUser();
+        //kiểm tra email tồn tại thì gửi
+        if(account.CheckEmailIsExist(email)){
+            System.out.println("Người dùng không tồn tại .");
+            //trở về màn hình
+            NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
+            notificationVoucherFlight.ViewNotificationVoucher();
+        }
+        else {
+            for (User user : users) {
+                if(user.getEmail().equalsIgnoreCase(email)){
+                    System.out.println("Nhập thông báo cho người dùng : ");
+                    String notification = sc.nextLine();
+                    user.setNotification(notification);
+                    logicFile.DeleteUserInFile(users);
+                    System.out.println("Thêm thông báo thành công");
+                }
+            }
+            NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
+            notificationVoucherFlight.ViewNotificationVoucher();
+        }
     }
     //VOUCHER
     List<Voucher> vouchers = new ArrayList<>();
@@ -55,7 +82,7 @@ public class LogicNotificationAndVoucher {
         System.out.print("Nhập giá trị mã voucher "+randomCode+"( % ) : ");
         int value = sc.nextInt();
         voucher.setValueVoucher(value);
-        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(voucher),"List_voucher.txt");
+        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(voucher),"list_voucher.txt");
         vouchers.add(voucher);
         System.out.println("Tạo mã voucher thành công !");
         //trở về màn hình ...
@@ -66,5 +93,18 @@ public class LogicNotificationAndVoucher {
         if(CheckVoucherIsExist(voucher.getVoucherCode())){
             flight.setPrice(flight.getPrice()*((100-voucher.getValueVoucher())/100));
         }
+    }
+
+    public void ShowListVoucher() throws FileNotFoundException {
+       List<Voucher> vouchers = logicFile.ConvertFileToVoucher();
+        for (Voucher voucher : vouchers) {
+            System.out.println("******************************");
+            System.out.println("Mã Voucher : "+voucher.getVoucherCode());
+            System.out.println("Giá trị : "+voucher.getValueVoucher()+" %");
+            System.out.println("******************************");
+        }
+        //trở về màn hình ...
+        NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
+        notificationVoucherFlight.ViewNotificationVoucher();
     }
 }
