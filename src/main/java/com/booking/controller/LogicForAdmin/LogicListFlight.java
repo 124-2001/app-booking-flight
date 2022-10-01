@@ -103,6 +103,7 @@ public class LogicListFlight {
             for (Flight flight : flights) {
                 if(!code.contains(flight.getFlightCode())){
                     flights.remove(flight);
+                    logicFile.DeleteFlightInFile(flights);
                     System.out.println("Huỷ chuyến bay thành công !");
                     count++;
                     break;
@@ -173,8 +174,6 @@ public class LogicListFlight {
                     int seats = sc.nextInt();
                     flight.setNumberOfSeats(seats);
                     System.out.println("Sửa thông tin thành công . ");
-                   // MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
-                   // menuOptionAdmin.MenuOptionAdmin();
                 }
             }
             logicFile.DeleteFlightInFile(flights);

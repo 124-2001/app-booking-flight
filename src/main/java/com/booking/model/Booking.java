@@ -1,16 +1,16 @@
 package com.booking.model;
 
-public class Booking {
-    private String codeBooking;
+public class Booking extends Flight {
+    private String codeBooking; //
 
     private int codeVoucher;
 
     private String notification;
 
-    public void SendNotification(){
-        System.out.println("");
-    }
 
+    public void SendNotification(){
+        System.out.println(notification);
+    }
     public String getNotification() {
         return notification;
     }

@@ -1,9 +1,21 @@
 package com.booking.model;
 
+import java.util.List;
+
 public class User {
     private String email;
     private String passWord;
     private int position_id;  //nếu là 0 => admin  1=> user  2=> guest
+
+    private String notification;
+
+    public String getNotification() {
+        return notification;
+    }
+
+    public void setNotification(String notification) {
+        this.notification = notification;
+    }
 
     public String getEmail() {
         return email;

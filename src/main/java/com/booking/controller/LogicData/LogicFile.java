@@ -1,5 +1,6 @@
 package com.booking.controller.LogicData;
 
+import com.booking.model.Booking;
 import com.booking.model.Flight;
 import com.booking.model.User;
 import com.booking.model.Voucher;
@@ -128,19 +129,19 @@ public class LogicFile {
     }
 
     //list booking
-    public List<Voucher> ConvertFileToVoucher() throws FileNotFoundException {
-        List<Voucher> vouchers = new ArrayList<>();
+    public List<Booking> ConvertFileToBooking() throws FileNotFoundException {
+        List<Booking> bookings = new ArrayList<>();
         Gson gson = new Gson();
         // Đọc dữ liệu từ File với File và FileReader
-        File file = new File("list_voucher.txt");
+        File file = new File("list_booking.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         try {
             String json = reader.readLine();
             while (json != null) {
-                Voucher voucher = gson.fromJson(json, Voucher.class);
+                Booking booking = gson.fromJson(json, Booking.class);
                 //với những dòng trống khí sửa hoặc xoá thì next qua dòng tieép để đọc
                 if(json!=null){
-                    vouchers.add(voucher);
+                    bookings.add(booking);
                     json = reader.readLine();
                 }
                 else {
@@ -156,7 +157,7 @@ public class LogicFile {
             } catch (IOException ex) {
             }
         }
-        return vouchers;
+        return bookings;
     }
 
     public void DeleteFlightInFile(List<Flight> flights) throws FileNotFoundException {

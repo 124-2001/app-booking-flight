@@ -22,7 +22,10 @@ public class NotificationVoucherFlight {
         }
         switch (n){
             case 1:
-                logicNotificationAndVoucher.SendNotificationCancelFlight();
+                System.out.println("Nhập email người nhận thông báo");
+                String email = sc.nextLine();
+                email=sc.nextLine();
+                logicNotificationAndVoucher.SendNotificationCancelFlight(email);
                 break;
             case 2:
                 logicNotificationAndVoucher.AddVoucher();
