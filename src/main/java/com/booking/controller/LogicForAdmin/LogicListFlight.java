@@ -44,6 +44,7 @@ public class LogicListFlight {
         return false;
     }
 
+    // tẠO CODE Random add cho flightcode
     public String RandomFlightCode(){
         String str ="ABCDEFGHYJKQMNL123456789";
         String ramdomFlightCode = "";
