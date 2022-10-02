@@ -7,6 +7,7 @@ import com.booking.controller.Regex.EmailRegex;
 import com.booking.model.User;
 
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SignIn {

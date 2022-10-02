@@ -23,28 +23,28 @@ public class MenuOptionAdmin {
         System.out.println("**************************");
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập lựa chọn: ");
-        int n = sc.nextInt();
-        while (n<0||n>6){
+        String n = sc.nextLine();
+        while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")&&!n.equals("4")&&!n.equals("5")&&!n.equals("6")){
             System.out.print("Nhập lại : ");
-            n = sc.nextInt();
+            n = sc.nextLine();
         }
         switch (n){
-            case 1:
+            case "1":
                 addDeleteFlight.AddDeleteFlight();
                 break;
-            case 2:
+            case "2":
                 logicListFlight.ChangeFlight();
                 break;
-            case 3:
+            case "3":
                 managementUser.ViewManagement();
                 break;
-            case 4:
+            case "4":
                 logicListFlight.ShowListFlight();
                 break;
-            case 5:
+            case "5":
                 notificationVoucherFlight.ViewNotificationVoucher();
                 break;
-            case 6:
+            case "6":
                 menuMain.DisplayMain();
                 break;
         }

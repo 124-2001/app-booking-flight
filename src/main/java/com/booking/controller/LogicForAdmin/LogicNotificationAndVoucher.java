@@ -9,10 +9,7 @@ import com.booking.model.User;
 import com.booking.model.Voucher;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class LogicNotificationAndVoucher {
 
@@ -71,23 +68,29 @@ public class LogicNotificationAndVoucher {
     }
 
     public void AddVoucher() throws FileNotFoundException {
-        //List<Voucher> vouchers= logicFile.ConvertFileToVoucher();
-        Voucher voucher = new Voucher();
-        Scanner sc = new Scanner(System.in);
-        String randomCode = RandomVoucher();
-        while (CheckVoucherIsExist(randomCode)){
-            randomCode=RandomVoucher();
+        try {
+            //List<Voucher> vouchers= logicFile.ConvertFileToVoucher();
+            Voucher voucher = new Voucher();
+            Scanner sc = new Scanner(System.in);
+            String randomCode = RandomVoucher();
+            while (CheckVoucherIsExist(randomCode)){
+                randomCode=RandomVoucher();
+            }
+            voucher.setVoucherCode(randomCode);
+            System.out.print("Nhập giá trị mã voucher vừa tạo :  "+randomCode+" ( % ) : ");
+            int value = sc.nextInt();
+            voucher.setValueVoucher(value);
+            logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(voucher),"list_voucher.txt");
+            //vouchers.add(voucher);
+            System.out.println("Tạo mã voucher thành công !");
+            //trở về màn hình ...
+            NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
+            notificationVoucherFlight.ViewNotificationVoucher();
         }
-        voucher.setVoucherCode(randomCode);
-        System.out.print("Nhập giá trị mã voucher "+randomCode+"( % ) : ");
-        int value = sc.nextInt();
-        voucher.setValueVoucher(value);
-        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(voucher),"list_voucher.txt");
-        vouchers.add(voucher);
-        System.out.println("Tạo mã voucher thành công !");
-        //trở về màn hình ...
-        NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
-        notificationVoucherFlight.ViewNotificationVoucher();
+        catch (InputMismatchException e){
+            System.out.println("Nhập sai cú pháp vui lòng nhập lại ");
+            AddVoucher();
+        }
     }
     public void VoucherPayment(Flight flight, Voucher voucher){
         if(CheckVoucherIsExist(voucher.getVoucherCode())){

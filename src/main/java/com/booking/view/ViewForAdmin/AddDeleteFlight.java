@@ -16,19 +16,19 @@ public class AddDeleteFlight {
         LogicListFlight logicListFlight= new LogicListFlight();
         MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
         System.out.print("Nhập lựa chọn : ");
-        int n = sc.nextInt();
-        while (n<0 || n>3){
+        String n = sc.nextLine();
+        while (n.equals("1")&&n.equals("2")&&n.equals("3")){
             System.out.println("Nhập lại lựa chọn :");
-            n = sc.nextInt();
+            n = sc.nextLine();
         }
         switch (n){
-            case 1:
+            case "1":
                 logicListFlight.AddFlight();
                 break;
-            case 2:
+            case "2":
                 logicListFlight.CancelFlight();
                 break;
-            case 3:
+            case "3":
                 menuOptionAdmin.MenuOptionAdmin();
                 break;
         }

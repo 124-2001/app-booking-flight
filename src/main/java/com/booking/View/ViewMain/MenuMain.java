@@ -1,6 +1,7 @@
 package com.booking.View.ViewMain;
 
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuMain {
@@ -12,22 +13,21 @@ public class MenuMain {
         System.out.println("3) Thoát chương trình");
         System.out.println("****************************************");
         System.out.println("NHẬP LỰA CHỌN : ");
-
-        int n = sc.nextInt();
-        while (n<0 || n>3){
+        String n = sc.nextLine();
+        while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")){
             System.out.println("Nhập lại lựa chọn :");
-            n = sc.nextInt();
+            n = sc.nextLine();
         }
         switch (n){
-            case 1:
+            case "1":
                 SignIn sign = new SignIn();
                 sign.signIn();
                 break;
-            case 2:
+            case "2":
                 Register register = new Register();
                 register.register();
                 break;
-            case 3:
+            case "3":
                 System.exit(0);
                 break;
         }

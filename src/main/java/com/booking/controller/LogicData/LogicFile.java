@@ -176,7 +176,7 @@ public class LogicFile {
             if(file.delete()){
                 //System.out.println(file.getName() + " is deleted!");
             }else{
-                System.out.println("Delete failed: File didn't delete");
+                //System.out.println("Delete failed: File didn't delete");
             }
         }catch(Exception e){
             System.out.println("Exception occurred");
