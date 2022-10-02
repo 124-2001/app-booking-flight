@@ -16,25 +16,25 @@ public class NotificationVoucherFlight {
         System.out.println("*******************************");
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập lựa chọn: ");
-        int n = sc.nextInt();
-        while (n<0||n>4){
+        String n = sc.nextLine();
+        while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")&&!n.equals("4")){
             System.out.print("Nhập lại : ");
-            n= sc.nextInt();
+            n= sc.nextLine();
         }
         switch (n){
-            case 1:
+            case "1":
                 System.out.println("Nhập email người nhận thông báo");
                 String email = sc.nextLine();
                 email=sc.nextLine();
                 logicNotificationAndVoucher.SendNotificationCancelFlight(email);
                 break;
-            case 2:
+            case "2":
                 logicNotificationAndVoucher.AddVoucher();
                 break;
-            case 3:
+            case "3":
                 logicNotificationAndVoucher.ShowListVoucher();
                 break;
-            case 4:
+            case "4":
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
                 break;

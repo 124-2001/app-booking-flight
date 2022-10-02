@@ -16,22 +16,22 @@ public class ManagementUser {
          System.out.println("**************************");
          Scanner sc = new Scanner(System.in);
          System.out.print("Nhập lựa chọn: ");
-         int n = sc.nextInt();
-         while (n<0||n>3){
+         String n = sc.nextLine();
+         while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")){
              System.out.print("Nhập lại : ");
-             n = sc.nextInt();
+             n = sc.nextLine();
          }
          switch (n){
-             case 1:
+             case "1":
                  logicListUser.ShowListUser();
                  break;
-             case 2:
+             case "2":
                  System.out.println("Nhập email người dùng muốn xoá : ");
                  String email = sc.nextLine();
                  email = sc.nextLine();
                  logicListUser.DeleteUserByEmail(email);
                  break;
-             case 3:
+             case "3":
                  MenuOptionAdmin menuOptionAdmin= new MenuOptionAdmin();
                  menuOptionAdmin.MenuOptionAdmin();
                  break;
