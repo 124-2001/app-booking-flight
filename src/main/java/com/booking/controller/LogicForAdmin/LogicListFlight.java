@@ -135,6 +135,7 @@ public class LogicListFlight {
 
     public void ShowListFlight() throws FileNotFoundException {
         List<Flight> flights= logicFile.ConvertFileToFlight();
+        DateRegex dateRegex = new DateRegex();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
@@ -148,7 +149,7 @@ public class LogicListFlight {
                 System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
                 System.out.println("Tên chuyến bay : "+flight.getFlightName());
                 System.out.println("Điểm xuất phát : "+flight.getFromPlace()+" Điểm kết thúc : "+flight.getToPlace());
-                System.out.println("Ngày bay : "+flight.getTime());
+                System.out.println("Ngày bay : "+dateRegex.getDate(flight.getTime().getTimeInMillis(),"dd/MM/yyyy"));
                 System.out.println("Giá vé : "+flight.getPrice());
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
                 System.out.println("*****************************************");

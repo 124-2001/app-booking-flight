@@ -1,3 +1,2 @@
-{"flightCode":"GLJ6N","flightName":"HP-HCM","fromPlace":"HP","toPlace":"HCM","price":690000,"numberOfSeats":60}
-{"flightCode":"E884Y","flightName":"HN-DN","fromPlace":"HN","toPlace":"DN","price":570000,"numberOfSeats":70}
-{"flightCode":"JA365","flightName":"HN-HCM","fromPlace":"HN","toPlace":"HCM","price":800000,"numberOfSeats":80}
+{"flightCode":"3CEHD","flightName":"","fromPlace":"HN","toPlace":"HCM","time":{"year":2022,"month":0,"dayOfMonth":2,"hourOfDay":15,"minute":39,"second":40},"price":500000,"numberOfSeats":80}
+{"flightCode":"9QM4G","flightName":"","fromPlace":"HN","toPlace":"HP","time":{"year":2022,"month":0,"dayOfMonth":2,"hourOfDay":15,"minute":46,"second":59},"price":700000,"numberOfSeats":90}
