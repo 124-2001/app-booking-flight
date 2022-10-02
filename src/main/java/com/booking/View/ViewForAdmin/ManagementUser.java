@@ -3,11 +3,12 @@ package com.booking.View.ViewForAdmin;
 import com.booking.controller.LogicForAdmin.LogicListUser;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Scanner;
 
 public class ManagementUser {
-     public void ViewManagement() throws FileNotFoundException {
+     public void ViewManagement() throws IOException {
          LogicListUser logicListUser = new LogicListUser();
          System.out.println("****************************");
          System.out.println("1) Danh sách list user ");

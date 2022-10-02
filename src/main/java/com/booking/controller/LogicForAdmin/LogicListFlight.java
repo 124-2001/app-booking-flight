@@ -2,21 +2,19 @@ package com.booking.controller.LogicForAdmin;
 
 import com.booking.View.ViewForAdmin.AddDeleteFlight;
 import com.booking.View.ViewForAdmin.MenuOptionAdmin;
-import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
-import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.controller.LogicForUser.DateAnalysis;
 import com.booking.controller.Regex.DateRegex;
 import com.booking.model.Flight;
-import com.booking.model.User;
-import com.google.gson.Gson;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.LinkedTransferQueue;
+
 
 public class LogicListFlight {
 
@@ -84,8 +82,6 @@ public class LogicListFlight {
                 System.out.print("Ngày bay (dd/mm/yyyy): ");
                 tempDateQuery = sc.nextLine();
             }
-            SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
-            Date date1 = formatter1.parse(tempDateQuery);
             Calendar dateCal = DateAnalysis.dateToCal(tempDateQuery);
             flight.setTime(dateCal);
             System.out.println("Nhập giá tiền : ");
@@ -105,13 +101,13 @@ public class LogicListFlight {
         catch (InputMismatchException e){
             System.out.println("Nhập sai cú pháp vui lòng nhập lại");
             AddFlight();
-        } catch (ParseException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    public void CancelFlight() throws FileNotFoundException {
+    public void CancelFlight() throws IOException {
         List<Flight> flights= logicFile.ConvertFileToFlight();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
@@ -125,6 +121,11 @@ public class LogicListFlight {
                 if(code.contains(flight.getFlightCode())){
                     flights.remove(flight);
                     logicFile.DeleteFlightInFile(flights);
+                    File file = new File("list_flight.txt");
+                    // if file  exists, then create it
+                    if (!file.exists()) {
+                        file.createNewFile();
+                    }
                     System.out.println("Huỷ chuyến bay thành công !");
                     count++;
                     break;
@@ -139,23 +140,26 @@ public class LogicListFlight {
         }
     }
 
-    public void ShowListFlight() throws FileNotFoundException {
+    public void ShowListFlight() throws IOException {
         List<Flight> flights= logicFile.ConvertFileToFlight();
         DateRegex dateRegex = new DateRegex();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
-            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
-            addDeleteFlight.AddDeleteFlight();
+            MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
+            menuOptionAdmin.MenuOptionAdmin();
         }
         else {
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
             System.out.println("*******LIST CÁC CHUYẾN BAY*******");
             for (Flight flight : flights) {
                 System.out.println("*****************************************");
                 System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
                 System.out.println("Tên chuyến bay : "+flight.getFlightName());
                 System.out.println("Điểm xuất phát : "+flight.getFromPlace()+"--------Điểm hạ cánh : "+flight.getToPlace());
-                System.out.println("Ngày bay : "+dateRegex.getDate(flight.getTime().getTimeInMillis(),"dd/MM/yyyy"));
+                //System.out.println("Ngày bay : "+dateRegex.getDate(flight.getTime().getTimeInMillis(),"dd/MM/yyyy"));
+                System.out.println("Ngày bay : "+formatter.format(flight.getTime().getTime()));
+                System.out.println("Ngày bay : "+flight.getTime().getTime());
                 System.out.println("Giá vé : "+flight.getPrice());
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
                 System.out.println("*****************************************");
@@ -212,6 +216,8 @@ public class LogicListFlight {
         catch (InputMismatchException e){
             System.out.println("Nhập sai cú pháp vui lòng nhập lại ");
             ChangeFlight();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

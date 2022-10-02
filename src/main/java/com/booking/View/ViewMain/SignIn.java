@@ -9,13 +9,14 @@ import com.booking.model.Flight;
 import com.booking.model.User;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SignIn {
     public static User signedIn = new User ();
-    public void signIn() throws FileNotFoundException {
+    public void signIn() throws IOException {
         Scanner scan = new Scanner (System.in);
         Account account = new Account();
         System.out.println("Đăng nhập");

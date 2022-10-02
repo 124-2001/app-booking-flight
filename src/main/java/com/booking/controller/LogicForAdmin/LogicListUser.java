@@ -5,6 +5,7 @@ import com.booking.controller.LogicData.LogicFile;
 import com.booking.model.User;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class LogicListUser {
         return false;
     }
 
-    public void ShowListUser() throws FileNotFoundException {
+    public void ShowListUser() throws IOException {
         List<User> users= logicFile.ConvertFileToUser();
         if(CheckListUserNull()){
             System.out.println("Danh sách người dùng đang rỗng . ");
@@ -53,7 +54,7 @@ public class LogicListUser {
         }
     }
 
-    public void DeleteUserByEmail(String email) throws FileNotFoundException {
+    public void DeleteUserByEmail(String email) throws IOException {
         List<User> users= logicFile.ConvertFileToUser();
         if(!CheckUserIsExist(email)){
             System.out.println("Không tìm được user, user không tồn tại . ");

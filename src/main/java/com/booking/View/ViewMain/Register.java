@@ -1,13 +1,14 @@
 package com.booking.View.ViewMain;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.Regex.*;
 
 public class Register {
-    public void register() throws FileNotFoundException {
+    public void register() throws IOException {
         Scanner scan = new Scanner (System.in);
         Account account = new Account();
         System.out.println("***** Đăng ký tài khoản người dùng *****");

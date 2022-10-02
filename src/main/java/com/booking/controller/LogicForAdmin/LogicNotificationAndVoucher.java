@@ -9,6 +9,7 @@ import com.booking.model.User;
 import com.booking.model.Voucher;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 public class LogicNotificationAndVoucher {
@@ -20,7 +21,7 @@ public class LogicNotificationAndVoucher {
     Account account= new Account();
 
     //NOTIFICATION
-    public void SendNotificationCancelFlight(String email) throws FileNotFoundException {
+    public void SendNotificationCancelFlight(String email) throws IOException {
         //clone list user
         List<User> users= logicFile.ConvertFileToUser();
         //kiểm tra email tồn tại thì gửi
@@ -87,7 +88,7 @@ public class LogicNotificationAndVoucher {
             NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
             notificationVoucherFlight.ViewNotificationVoucher();
         }
-        catch (InputMismatchException e){
+        catch (InputMismatchException | IOException e){
             System.out.println("Nhập sai cú pháp vui lòng nhập lại ");
             AddVoucher();
         }
@@ -98,7 +99,7 @@ public class LogicNotificationAndVoucher {
         }
     }
 
-    public void ShowListVoucher() throws FileNotFoundException {
+    public void ShowListVoucher() throws IOException {
        List<Voucher> vouchers = logicFile.ConvertFileToVoucher();
         for (Voucher voucher : vouchers) {
             System.out.println("******************************");

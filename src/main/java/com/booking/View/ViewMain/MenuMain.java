@@ -1,11 +1,12 @@
 package com.booking.View.ViewMain;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuMain {
-    public void DisplayMain() throws FileNotFoundException {
+    public void DisplayMain() throws IOException {
         Scanner sc = new Scanner(System.in);
         System.out.println("****************************************");
         System.out.println("1) Đăng nhập");

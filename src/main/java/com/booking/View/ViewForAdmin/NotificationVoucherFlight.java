@@ -3,10 +3,11 @@ package com.booking.View.ViewForAdmin;
 import com.booking.controller.LogicForAdmin.LogicNotificationAndVoucher;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class NotificationVoucherFlight {
-    public void ViewNotificationVoucher() throws FileNotFoundException {
+    public void ViewNotificationVoucher() throws IOException {
         LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
         System.out.println("*******************************");
         System.out.println("1) Gửi thông báo cho người dùng");

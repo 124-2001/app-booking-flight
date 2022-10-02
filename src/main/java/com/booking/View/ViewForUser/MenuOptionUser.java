@@ -3,6 +3,7 @@ package com.booking.View.ViewForUser;
 import com.booking.View.ViewMain.MenuMain;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuOptionUser {
@@ -38,7 +39,7 @@ public class MenuOptionUser {
                 MenuMain menu = new MenuMain();
                 try {
                     menu.DisplayMain();
-                } catch (FileNotFoundException e) {
+                } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
