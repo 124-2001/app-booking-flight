@@ -1,7 +1,5 @@
 package com.booking.controller.LogicForUser;
 
-import com.booking.View.ViewForAdmin.ManagementUser;
-import com.booking.View.ViewForUser.EditInfo;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.User;
@@ -21,20 +19,7 @@ public class LogicUserInfo {
         return !b;
         // Not a number from 1 to 3 => b = false => Return true => Activate while loop
     }
-    public static void processChoice(int input) {
-        EditInfo temp = new EditInfo();
-        switch (input) {
-            case 1 -> {
-                try {
-                    temp.editEmail();
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            case 2 -> temp.editPassword();
-        }
-    }
-    public static void editEmailDelAdd(String oldE,String newE) throws FileNotFoundException {
+    public static void editEmail(String oldE, String newE) throws FileNotFoundException {
         LogicFile logicFile = new LogicFile();
         LogicJson logicJson = new LogicJson();
         List<User> users= logicFile.ConvertFileToUser();
@@ -56,7 +41,45 @@ public class LogicUserInfo {
         user.setPassWord(password);
         user.setPosition_id(1);
         logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(user),"list_user.txt");
-        System.out.println("Đã đổi Email. 100% hoàn thành.");
+        System.out.println("Đang đổi Email. 100% hoàn thành.");
+        System.out.println("Đổi mật khẩu thành công!");
         // Thêm người dùng mới với email mới, password và perm không đổi
+    }
+    public static void editPassWord(String oldP,String newP) {
+        LogicFile logicFile = new LogicFile();
+        LogicJson logicJson = new LogicJson();
+        List<User> users;
+        try {
+            users = logicFile.ConvertFileToUser();
+        } catch (FileNotFoundException e) {
+            System.out.println("Đã có lỗi xảy ra");
+            return;
+        }
+        String email = null;
+        for (User user : users) {
+            if (user.getPassWord().equals(oldP) && user.getPosition_id()==1){
+                email = user.getEmail();
+                users.remove(user);
+                try {
+                    logicFile.DeleteUserInFile(users);
+                } catch (FileNotFoundException e) {
+                    System.out.println("Đã có lỗi xảy ra");
+                    return;
+                }
+                System.out.println("Đang đổi mật khẩu. 50% hoàn thành...");
+                // Just to confirm this process is performed correctly
+                break;
+            }
+        }
+        // Xóa người dùng cũ
+
+        User user = new User();
+        user.setEmail(email);
+        user.setPassWord(newP);
+        user.setPosition_id(1);
+        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(user),"list_user.txt");
+        System.out.println("Đang đổi mật khẩu. 100% hoàn thành.");
+        System.out.println("Đổi mật khẩu thành công!");
+        // Thêm người dùng mới với mật khẩu mới, email và perm không đổi
     }
 }
