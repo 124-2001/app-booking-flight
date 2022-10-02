@@ -121,6 +121,7 @@ public class LogicListFlight {
                 if(code.contains(flight.getFlightCode())){
                     flights.remove(flight);
                     logicFile.DeleteFlightInFile(flights);
+                    // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình
                     File file = new File("list_flight.txt");
                     // if file  exists, then create it
                     if (!file.exists()) {

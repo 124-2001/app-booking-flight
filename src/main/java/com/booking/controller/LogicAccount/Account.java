@@ -45,7 +45,7 @@ public class Account {
     public boolean CheckEmailIsExist(String email) throws FileNotFoundException {
         List<User> users= logicFile.ConvertFileToUser();
         for (User user : users) {
-            if(user.getEmail().equalsIgnoreCase(email)){
+            if(user.getEmail().equalsIgnoreCase(email)&&user.getPosition_id()==1){
                 return false;
             }
         }
