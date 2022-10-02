@@ -1,27 +1,23 @@
 package com.booking.model;
 
+import java.util.Calendar;
+
 public class Booking extends Flight {
     private String userEmail;
-    private String flightCode;
-    private int voucherCode;
+    private String voucherCode;
     private String codeBooking; //
-
     private String notification;
 
     public Booking() {
     }
 
-    public Booking(String userEmail, String flightCode, int voucherCode) {
+    public Booking(String flightCode, String flightName, String fromPlace, String toPlace,
+                   Calendar time, long price, int numberOfSeats,
+                   String userEmail, String voucherCode, String codeBooking) {
+        super(flightCode, flightName, fromPlace, toPlace, time, price, numberOfSeats);
         this.userEmail = userEmail;
-        this.flightCode = flightCode;
         this.voucherCode = voucherCode;
-    }
-
-    public Booking(String userEmail, String flightCode, int voucherCode, String notification) {
-        this.userEmail = userEmail;
-        this.flightCode = flightCode;
-        this.voucherCode = voucherCode;
-        this.notification = notification;
+        this.codeBooking = codeBooking;
     }
 
     public String getUserEmail() {
@@ -32,20 +28,20 @@ public class Booking extends Flight {
         this.userEmail = userEmail;
     }
 
-    public String getFlightCode() {
-        return flightCode;
-    }
-
-    public void setFlightCode(String flightCode) {
-        this.flightCode = flightCode;
-    }
-
-    public int getVoucherCode() {
+    public String getVoucherCode() {
         return voucherCode;
     }
 
-    public void setVoucherCode(int voucherCode) {
+    public void setVoucherCode(String voucherCode) {
         this.voucherCode = voucherCode;
+    }
+
+    public String getCodeBooking() {
+        return codeBooking;
+    }
+
+    public void setCodeBooking(String codeBooking) {
+        this.codeBooking = codeBooking;
     }
 
     public String getNotification() {
@@ -56,15 +52,9 @@ public class Booking extends Flight {
         this.notification = notification;
     }
 
-    public void sendNotification() {
-        System.out.println("");
-    }
-
-    public String getCodeBooking() {
-        return codeBooking;
-    }
-
-    public void setCodeBooking(String codeBooking) {
-        this.codeBooking = codeBooking;
+    @Override
+    public String toString() {
+        return "Booking #" + codeBooking +
+                "\n" + super.toString();
     }
 }

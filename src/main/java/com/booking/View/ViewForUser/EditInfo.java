@@ -38,17 +38,18 @@ public class EditInfo {
         System.out.println("Địa chỉ email của bạn sẽ được đổi thành \"" + tempEmail + "\".");
         System.out.print("Bạn có chắc muốn đổi email không? (Có bấm 1, Không bấm 0)");
         do {
-            temp1 = false;
             try {
                 confirm = scan.nextInt();
                 if (confirm != 1 && confirm != 0) {
-                    temp1 = true;
                     System.out.println("Vui lòng chỉ nhập giá trị 1 hoặc 0.");
+                    continue;
                 }
+                else break;
             } catch (InputMismatchException e) {
                 System.out.println("Vui lòng chỉ nhập giá trị 1 hoặc 0.");
+                continue;
             }
-        } while (temp1);
+        } while (true);
 
         System.out.println("Đang đổi Email. 0% hoàn thành...");
         LogicUserInfo.editEmailDelAdd(signedIn.getEmail(),tempEmail);

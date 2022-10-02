@@ -82,13 +82,12 @@ public class Flight {
         this.numberOfSeats = numberOfSeats;
     }
 
-/*    private int flightId;
-    private String flightCode;
-    private String fightName;
-    private String fromPlace;
-    private String toPlace;
-    private Date startTimePlan;
-    private Date endTimePlan;
-    private Date totalSeat;*/
-
+    @Override
+    public String toString() {
+        return "Flight #" + flightCode +
+                "\nFrom: " + fromPlace +
+                "\nTo: " + toPlace +
+                "\nTime: " + time +
+                "\nPrice: " + price;
+    }
 }
