@@ -6,8 +6,6 @@ public class Booking extends Flight {
     private int voucherCode;
     private String codeBooking; //
 
-    private int codeVoucher;
-
     private String notification;
 
     public Booking() {
@@ -49,6 +47,7 @@ public class Booking extends Flight {
     public void setVoucherCode(int voucherCode) {
         this.voucherCode = voucherCode;
     }
+
     public String getNotification() {
         return notification;
     }
@@ -67,13 +66,5 @@ public class Booking extends Flight {
 
     public void setCodeBooking(String codeBooking) {
         this.codeBooking = codeBooking;
-    }
-
-    public int getCodeVoucher() {
-        return codeVoucher;
-    }
-
-    public void setCodeVoucher(int codeVoucher) {
-        this.codeVoucher = codeVoucher;
     }
 }
