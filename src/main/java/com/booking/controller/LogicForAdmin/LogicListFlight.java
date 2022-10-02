@@ -13,6 +13,8 @@ import com.booking.model.User;
 import com.google.gson.Gson;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.LinkedTransferQueue;
 
@@ -82,6 +84,8 @@ public class LogicListFlight {
                 System.out.print("Ngày bay (dd/mm/yyyy): ");
                 tempDateQuery = sc.nextLine();
             }
+            SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+            Date date1 = formatter1.parse(tempDateQuery);
             Calendar dateCal = DateAnalysis.dateToCal(tempDateQuery);
             flight.setTime(dateCal);
             System.out.println("Nhập giá tiền : ");
@@ -101,6 +105,8 @@ public class LogicListFlight {
         catch (InputMismatchException e){
             System.out.println("Nhập sai cú pháp vui lòng nhập lại");
             AddFlight();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
 
     }
@@ -148,7 +154,7 @@ public class LogicListFlight {
                 System.out.println("*****************************************");
                 System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
                 System.out.println("Tên chuyến bay : "+flight.getFlightName());
-                System.out.println("Điểm xuất phát : "+flight.getFromPlace()+" Điểm kết thúc : "+flight.getToPlace());
+                System.out.println("Điểm xuất phát : "+flight.getFromPlace()+"--------Điểm hạ cánh : "+flight.getToPlace());
                 System.out.println("Ngày bay : "+dateRegex.getDate(flight.getTime().getTimeInMillis(),"dd/MM/yyyy"));
                 System.out.println("Giá vé : "+flight.getPrice());
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());

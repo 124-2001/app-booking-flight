@@ -1,2 +1,3 @@
 {"flightCode":"3CEHD","flightName":"","fromPlace":"HN","toPlace":"HCM","time":{"year":2022,"month":0,"dayOfMonth":2,"hourOfDay":15,"minute":39,"second":40},"price":500000,"numberOfSeats":80}
 {"flightCode":"9QM4G","flightName":"","fromPlace":"HN","toPlace":"HP","time":{"year":2022,"month":0,"dayOfMonth":2,"hourOfDay":15,"minute":46,"second":59},"price":700000,"numberOfSeats":90}
+{"flightCode":"KH76G","flightName":"","fromPlace":"HCM","toPlace":"DN","time":{"year":2022,"month":0,"dayOfMonth":2,"hourOfDay":20,"minute":29,"second":21},"price":800000,"numberOfSeats":70}
