@@ -64,13 +64,38 @@ public class LogicListFlight {
         return randomised;
     }
     public void selectFlight(Flight selFlight, int noSeats, Voucher selVoucher) {
-        long discountedPrice = pricePostVoucher(selFlight.getPrice(),selVoucher.getValueVoucher());
+        long discountedPrice = pricePostVoucher(selFlight.getPrice(),noSeats,selVoucher.getValueVoucher());
         String bookingCode = generateBookingCode();
         Booking booked = new Booking(selFlight.getFlightCode(),selFlight.getFlightName(),
                 selFlight.getFromPlace(),selFlight.getToPlace(),selFlight.getTime(),discountedPrice,
                 selFlight.getNumberOfSeats(),signedIn.getEmail(),selVoucher.getVoucherCode(),
                 bookingCode);
         bookings.add(booked);
+        System.out.println("Đang đặt vé. 33% hoàn thành...");
+
+        vouchers.remove(selVoucher);
+        try {
+            logicFile.DeleteVoucherInFile(vouchers);
+        } catch (FileNotFoundException e) {
+            System.out.println("Không tìm thấy file cần sửa.");
+        }
+        System.out.println("Đang đặt vé. 66% hoàn thành...");
+        // Xóa voucher
+
+        for (Flight temp: flights) {
+            if (temp == selFlight) {
+                int left = temp.getNumberOfSeats() - noSeats;
+                temp.setNumberOfSeats(left);
+                break;
+            }
+        }
+        try {
+            logicFile.DeleteFlightInFile(flights);
+        } catch (FileNotFoundException e) {
+            System.out.println("Không tìm thấy file cần sửa.");
+        }
+        // Chỉnh sửa lại số ghế máy bay trong List và File
+        System.out.println("Đang đặt vé. 100% hoàn thành...");
     }
     public Flight verifyFlight(ArrayList<Flight> filteredFlights, String flightCode) {
         for (Flight temp: filteredFlights)
@@ -80,13 +105,12 @@ public class LogicListFlight {
     }
     public Voucher verifyVoucher(String voucherCode) {
         for (Voucher temp: vouchers)
-            if (temp.getVoucherCode().equals(voucherCode.toUpperCase())) {
+            if (temp.getVoucherCode().equals(voucherCode.toUpperCase()))
                 return temp;
-            }
         return null;
     }
-    public long pricePostVoucher(long price,int discount) {
-        return price * (1-discount/100);
+    public long pricePostVoucher(long price, int noSeats, int discount) {
+        return price * noSeats * (1-discount/100);
     }
     public boolean cancelFlight(String bookingCode) {
         for (Booking temp: bookings)

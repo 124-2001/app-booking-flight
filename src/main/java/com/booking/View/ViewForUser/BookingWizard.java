@@ -79,13 +79,14 @@ public class BookingWizard {
                     System.out.printf("Mã khuyến mãi áp dụng thành công." +
                                     "Bạn được giảm %d%% (%d VND) cho chuyến bay này.",
                                     selectedVoucher.getValueVoucher(),
-                                    tempLLF.pricePostVoucher(selected.getPrice(),selectedVoucher.getValueVoucher()));
+                                    tempLLF.pricePostVoucher(selected.getPrice(),amount,selectedVoucher.getValueVoucher()));
                     break;
                 }
                 else System.out.println("Mã khuyến mãi không hợp lệ. Vui lòng thử lại.");
             }
         } while (true);
 
+        System.out.println("Đang đặt vé. 0% hoàn thành...");
         tempLLF.selectFlight(selected,amount,selectedVoucher);
 
         System.out.println("Đặt chuyến bay thành công.");
