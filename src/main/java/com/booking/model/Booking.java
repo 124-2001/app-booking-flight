@@ -12,7 +12,7 @@ public class Booking extends Flight {
     }
 
     public Booking(String flightCode, String flightName, String fromPlace, String toPlace,
-                   Calendar time, long price, int numberOfSeats,
+                   Calendar time, float price, int numberOfSeats,
                    String userEmail, String voucherCode, String codeBooking) {
         super(flightCode, flightName, fromPlace, toPlace, time, price, numberOfSeats);
         this.userEmail = userEmail;

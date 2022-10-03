@@ -1,20 +1,23 @@
 package com.booking.controller.LogicForUser;
 
 import com.booking.controller.LogicData.LogicFile;
+import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.Flight;
 import com.booking.model.Booking;
 import com.booking.model.Voucher;
 import static com.booking.View.ViewMain.SignIn.signedIn;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
 public class LogicListFlight {
-
     LogicFile logicFile = new LogicFile();
+    LogicJson logicJson = new LogicJson();
     List<Flight> flights;
     {
         try {
@@ -59,18 +62,20 @@ public class LogicListFlight {
         Random random = new Random();
         for (int i = 0; i < 5; i++){
             int n = random.nextInt(characters.length());
-            randomised+=characters.charAt(n-1);
+            randomised+=characters.charAt(n);
         }
         return randomised;
     }
     public void selectFlight(Flight selFlight, int noSeats, Voucher selVoucher) {
-        long discountedPrice = pricePostVoucher(selFlight.getPrice(),noSeats,selVoucher.getValueVoucher());
+        float percentage = 1-(selVoucher.getValueVoucher()/100);
+        float discountedPrice = selFlight.getPrice()*noSeats*percentage;
         String bookingCode = generateBookingCode();
         Booking booked = new Booking(selFlight.getFlightCode(),selFlight.getFlightName(),
                 selFlight.getFromPlace(),selFlight.getToPlace(),selFlight.getTime(),discountedPrice,
                 selFlight.getNumberOfSeats(),signedIn.getEmail(),selVoucher.getVoucherCode(),
                 bookingCode);
         bookings.add(booked);
+        logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(booked),"list_booking.txt");
         System.out.println("Đang đặt vé. 33% hoàn thành...");
 
         vouchers.remove(selVoucher);
@@ -109,13 +114,23 @@ public class LogicListFlight {
                 return temp;
         return null;
     }
-    public long pricePostVoucher(long price, int noSeats, int discount) {
-        return price * noSeats * (1-discount/100);
-    }
     public boolean cancelFlight(String bookingCode) {
         for (Booking temp: bookings)
             if (temp.getCodeBooking().equals(bookingCode.toUpperCase())) {
                 bookings.remove(temp);
+                try {
+                    logicFile.DeleteBookingInFile(bookings);
+                    // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình
+                    File file = new File("list_booking.txt");
+                    // if file  exists, then create it
+                    if (!file.exists()) {
+                        file.createNewFile();
+                    }
+                } catch (FileNotFoundException e) {
+                    System.out.println("Không tìm thấy file.");
+                } catch (IOException e) {
+                    System.out.println("Đã xảy ra lỗi.");
+                }
                 return true;
             }
         return false;

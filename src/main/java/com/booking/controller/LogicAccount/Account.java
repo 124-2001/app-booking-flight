@@ -10,18 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
-
      LogicFile logicFile = new LogicFile();
-
      LogicJson logicJson = new LogicJson();
-
-
-
 
     public boolean CheckUserPassword(String email, String passWord) throws FileNotFoundException {
         List<User> users= logicFile.ConvertFileToUser();
         for (User user : users) {
-            if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().toLowerCase().equalsIgnoreCase(passWord)){
+            if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().equals(passWord)){
                return true;
             }
         }

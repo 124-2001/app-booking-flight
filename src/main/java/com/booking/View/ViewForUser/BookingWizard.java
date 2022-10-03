@@ -2,7 +2,6 @@ package com.booking.View.ViewForUser;
 
 import com.booking.controller.LogicForUser.*;
 import com.booking.controller.Regex.DateRegex;
-import com.booking.model.Booking;
 import com.booking.model.Flight;
 import com.booking.model.Voucher;
 
@@ -38,9 +37,9 @@ public class BookingWizard {
         }
 
         for (Flight temp: filteredFlights) System.out.println(temp);
-        Flight selected = null;
+        Flight selected;
         do {
-            System.out.println("Vui lòng nhập mã chuyến bay mong muốn." +
+            System.out.println("Vui lòng nhập mã chuyến bay mong muốn. " +
                     "Nhập 0 để quay trở về màn hình chính.");
             String tempFlightCode = scan.nextLine();
             if (tempFlightCode.equals("0")) return;
@@ -54,10 +53,11 @@ public class BookingWizard {
             }
         } while (true);
 
-        int amount = 0;
+        int amount;
         do {
             System.out.printf("Số ghế muốn đặt (Tối thiểu là 1, tối đa là %d): ",selected.getNumberOfSeats());
             amount = scan.nextInt();
+            scan.nextLine();
             if (amount < 1 || amount > selected.getNumberOfSeats()) {
                 System.out.printf("Vui lòng chỉ lựa chọn số lượng giữa 1 và %d.",selected.getNumberOfSeats());
             }
@@ -68,7 +68,7 @@ public class BookingWizard {
         do {
             System.out.print("Mã khuyến mãi (Nhập 0 nếu không sử dụng mã khuyến mãi): ");
             String tempVoucher = scan.nextLine();
-            if (tempVoucher == "0") {
+            if (tempVoucher.equals("0")) {
                 selectedVoucher.setVoucherCode("0");
                 selectedVoucher.setValueVoucher(0);
                 break;
@@ -76,10 +76,10 @@ public class BookingWizard {
             else {
                 selectedVoucher = tempLLF.verifyVoucher(tempVoucher);
                 if (selectedVoucher != null) {
-                    System.out.printf("Mã khuyến mãi áp dụng thành công." +
-                                    "Bạn được giảm %d%% (%d VND) cho chuyến bay này.",
-                                    selectedVoucher.getValueVoucher(),
-                                    tempLLF.pricePostVoucher(selected.getPrice(),amount,selectedVoucher.getValueVoucher()));
+                    float discount = selected.getPrice()*amount*(selectedVoucher.getValueVoucher()/100);
+                    System.out.printf("Mã khuyến mãi áp dụng thành công. " +
+                                    "Bạn được giảm %d%% cho chuyến bay này.\n",
+                                    selectedVoucher.getValueVoucher());
                     break;
                 }
                 else System.out.println("Mã khuyến mãi không hợp lệ. Vui lòng thử lại.");

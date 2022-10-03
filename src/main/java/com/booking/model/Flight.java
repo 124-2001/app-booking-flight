@@ -9,14 +9,14 @@ public class Flight {
     private String fromPlace;
     private String toPlace;
     private Calendar time;
-    private long price;
+    private float price;
     private int numberOfSeats;
 
     public Flight() {
     }
 
     public Flight(String flightCode, String flightName, String fromPlace, String toPlace,
-                  Calendar time, long price, int numberOfSeats) {
+                  Calendar time, float price, int numberOfSeats) {
         this.flightCode = flightCode;
         this.flightName = flightName;
         this.fromPlace = fromPlace;
@@ -66,11 +66,11 @@ public class Flight {
         this.time = time;
     }
 
-    public long getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

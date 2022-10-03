@@ -6,6 +6,7 @@ import com.booking.controller.Regex.EmailRegex;
 import com.booking.controller.Regex.PasswordRegex;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public  class  DisplayInfo {
     public void displayInfo() {
         Scanner scan = new Scanner(System.in);
         String ans = "c";
+        MenuOptionUser menu = new MenuOptionUser();
         do {
             if (LogicUserInfo.verifyChoice1(ans)) {
                 System.out.println("******* Quản lý thông tin cá nhân ******");
@@ -37,7 +39,11 @@ public  class  DisplayInfo {
                             System.out.println("Vui lòng chỉ chọn số từ 1 đến 3");
                             ans2 = scan.nextInt();
                         }
-                        if (ans2 == 3) break;
+                        scan.nextLine();
+                        if (ans2 == 3) {
+                            System.out.println("Đang quay trở về màn hình chính...");
+                            return;
+                        }
                         switch (ans2) {
                             case 1 -> editEmail();
                             case 2 -> editPassword();
@@ -49,7 +55,7 @@ public  class  DisplayInfo {
                     return;
                 }
                 default -> System.out.println("Vui lòng chỉ nhập \"C\" (thay đổi thông tin)" +
-                        "hoặc \"K\" (quay trở về màn hình chính.");
+                        "hoặc \"K\" (quay trở về màn hình chính).");
             }
         } while (true);
     }
@@ -74,7 +80,7 @@ public  class  DisplayInfo {
         } while (true);
 
         System.out.println("Địa chỉ email của bạn sẽ được đổi thành \"" + tempEmail + "\".");
-        System.out.print("Bạn có chắc muốn đổi email không? (Có bấm 1, Không bấm 0)");
+        System.out.println("Bạn có chắc muốn đổi email không? (Có bấm 1, Không bấm 0)");
         do {
             try {
                 confirm = scan.nextInt();
@@ -92,6 +98,7 @@ public  class  DisplayInfo {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        signedIn.setEmail(tempEmail);
     }
     public void editPassword() {
         Scanner scan = new Scanner (System.in);

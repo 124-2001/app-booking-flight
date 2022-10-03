@@ -190,11 +190,34 @@ public class LogicFile {
         }
     }
 
+    public void DeleteBookingInFile(List<Booking> bookings) throws FileNotFoundException {
+        //xoá file cũ
+        try{
+            //Specify the file name and path
+            File file = new File("list_booking.txt");
+
+            if(file.delete()){
+                //System.out.println(file.getName() + " is deleted!");
+            }else{
+                //System.out.println("Delete failed: File didn't delete");
+            }
+        }catch(Exception e){
+            System.out.println("Exception occurred");
+            e.printStackTrace();
+        }
+        //lấy list mới đổi convert ra dãy mảng chuỗi rồi viết ra file cùng tên file vừa xoá
+        LogicJson logicJson = new LogicJson();
+        for (Booking booking : bookings) {
+            String json = logicJson.ConvertObjectToStringJson(booking);
+            WriteStringJsonToFile(json,"list_booking.txt");
+        }
+    }
+
     public void DeleteVoucherInFile(List<Voucher> vouchers) throws FileNotFoundException {
         //xoá file cũ
         try{
             //Specify the file name and path
-            File file = new File("list_flight.txt");
+            File file = new File("list_voucher.txt");
 
             if(file.delete()){
                 //System.out.println(file.getName() + " is deleted!");
@@ -209,7 +232,7 @@ public class LogicFile {
         LogicJson logicJson = new LogicJson();
         for (Voucher voucher : vouchers) {
             String json = logicJson.ConvertObjectToStringJson(voucher);
-            WriteStringJsonToFile(json,"list_flight.txt");
+            WriteStringJsonToFile(json,"list_voucher.txt");
         }
     }
 

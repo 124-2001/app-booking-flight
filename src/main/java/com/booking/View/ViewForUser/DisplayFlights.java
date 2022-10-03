@@ -72,13 +72,15 @@ public class DisplayFlights {
         Scanner scan = new Scanner(System.in);
         String tempBookingCode = null;
         do {
-            System.out.print("Nhập mã đặt vé của chuyến bay cần hủy" +
+            System.out.print("Nhập mã đặt vé của chuyến bay cần hủy " +
                     "(Nhập 0 để quay về màn hình chính): ");
             try {
                 tempBookingCode = scan.nextLine();
-                if (tempBookingCode == "0") break;
-                else if (tempLLF.cancelFlight(tempBookingCode))
+                if (tempBookingCode.equals("0")) break;
+                else if (tempLLF.cancelFlight(tempBookingCode)) {
                     System.out.println("Hủy chuyến bay thành công.");
+                    break;
+                }
                 else System.out.println("Không tìm thấy mã đặt vé. Vui lòng thử lại.");
             } catch (InputMismatchException e) {
                 System.out.println("Vui lòng nhập chính xác mã đặt vé của chuyến bay đã đặt.");
