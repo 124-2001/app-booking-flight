@@ -18,7 +18,7 @@ public class AddDeleteFlight {
         MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
         System.out.print("Nhập lựa chọn : ");
         String n = sc.nextLine();
-        while (n.equals("1")&&n.equals("2")&&n.equals("3")){
+        while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")){
             System.out.println("Nhập lại lựa chọn :");
             n = sc.nextLine();
         }

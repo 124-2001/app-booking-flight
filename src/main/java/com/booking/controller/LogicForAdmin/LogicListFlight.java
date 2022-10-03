@@ -158,7 +158,7 @@ public class LogicListFlight {
             menuOptionAdmin.MenuOptionAdmin();
         }
         else {
-            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
             System.out.println("*******LIST CÁC CHUYẾN BAY*******");
             for (Flight flight : flights) {
                 System.out.println("*****************************************");
@@ -166,7 +166,7 @@ public class LogicListFlight {
                 System.out.println("Tên chuyến bay : "+flight.getFlightName());
                 System.out.println("Điểm xuất phát : "+flight.getFromPlace()+"--------Điểm hạ cánh : "+flight.getToPlace());
                 System.out.println("Ngày bay : "+formatter.format(flight.getTime().getTime()));
-                System.out.println("Ngày bay : "+flight.getTime().getTime());
+                //System.out.println("Ngày bay : "+flight.getTime().getTime());
                 System.out.println("Giá vé : "+flight.getPrice());
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
                 System.out.println("*****************************************");
@@ -205,6 +205,22 @@ public class LogicListFlight {
                         System.out.println("Nhập điểm hạ cánh : ");
                         String endPlace = sc.nextLine();
                         flight.setToPlace(endPlace);
+                        System.out.println("Ngày bay (dd/mm/yyyy): ");
+                        String tempDateQuery = sc.nextLine();
+                        while (DateRegex.dateRegex(tempDateQuery) || DateRegex.realDate(tempDateQuery)) {
+                            System.out.println("Vui lòng nhập ngày bay hợp lệ theo định dạng dd/mm/yyyy");
+                            System.out.println("Ngày bay (dd/mm/yyyy): ");
+                            tempDateQuery = sc.nextLine();
+                        }
+                        System.out.println("Giờ bay (hh:mm): ");
+                        String tempTimeQuery = sc.nextLine();
+                        while (DateRegex.timeRegex(tempTimeQuery) || DateRegex.realTime(tempTimeQuery)) {
+                            System.out.println("Vui lòng nhập giờ bay hợp lệ theo định dạng hh:mm");
+                            System.out.println("Giờ bay (hh:mm): ");
+                            tempTimeQuery = sc.nextLine();
+                        }
+                        Calendar dateCal = DateAnalysis.datetimeToCal(tempDateQuery,tempTimeQuery);
+                        flight.setTime(dateCal);
                         System.out.println("Nhập giá tiền : ");
                         long price = sc.nextLong();
                         flight.setPrice(price);
@@ -215,7 +231,7 @@ public class LogicListFlight {
                     }
                 }
                 logicFile.DeleteFlightInFile(flights);
-                System.out.println("Done");
+                //System.out.println("Done");
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
             }

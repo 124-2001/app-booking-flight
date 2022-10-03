@@ -27,10 +27,10 @@ public class ManagementUser {
                  logicListUser.ShowListUser();
                  break;
              case "2":
-                 System.out.println("Nhập email người dùng muốn xoá : ");
-                 String email = sc.nextLine();
+                 /*System.out.println("Nhập email người dùng muốn xoá : ");
+                 String email = sc.nextLine();*/
                  //email = sc.nextLine();
-                 logicListUser.DeleteUserByEmail(email);
+                 logicListUser.DeleteUserByEmail();
                  break;
              case "3":
                  MenuOptionAdmin menuOptionAdmin= new MenuOptionAdmin();

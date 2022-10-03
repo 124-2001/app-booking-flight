@@ -2,12 +2,14 @@ package com.booking.controller.LogicForAdmin;
 
 import com.booking.View.ViewForAdmin.ManagementUser;
 import com.booking.controller.LogicData.LogicFile;
+import com.booking.controller.Regex.EmailRegex;
 import com.booking.model.User;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class LogicListUser {
 
@@ -42,27 +44,37 @@ public class LogicListUser {
         else {
             int count =1;
             for (User user : users) {
-                System.out.println("--------------------------");
-                System.out.println("STT : "+count);
-                System.out.println("Email : "+user.getEmail());
-                System.out.println("--------------------------");
-                count++;
+                if(user.getPosition_id()==1){
+                    System.out.println("--------------------------");
+                    System.out.println("STT : "+count);
+                    System.out.println("Email : "+user.getEmail());
+                    System.out.println("--------------------------");
+                    count++;
+                }
             }
-
+            //trở về màn hnh ...
             ManagementUser managementUser= new ManagementUser();
             managementUser.ViewManagement();
         }
     }
 
-    public void DeleteUserByEmail(String email) throws IOException {
+    public void DeleteUserByEmail() throws IOException {
+        Scanner sc = new Scanner(System.in);
+        EmailRegex regex = new EmailRegex();
+        System.out.println("Nhập email người dùng muốn xoá : ");
+        String email = sc.nextLine();
         List<User> users= logicFile.ConvertFileToUser();
         if(!CheckUserIsExist(email)){
             System.out.println("Không tìm được user, user không tồn tại . ");
             //trở về màn hình ...
             ManagementUser managementUser = new ManagementUser();
             managementUser.ViewManagement();
-        }
-        else {
+        } else if (!email.contains("@gmail.com")) {
+            System.out.println("Không đúng định dạng . ");
+            //trở về màn hình ...
+            ManagementUser managementUser = new ManagementUser();
+            managementUser.ViewManagement();
+        } else {
             for (User user : users) {
                 if (user.getEmail().equalsIgnoreCase(email) && user.getPosition_id()==1){
                     users.remove(user);
