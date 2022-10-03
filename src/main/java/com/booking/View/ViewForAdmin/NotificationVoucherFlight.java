@@ -26,7 +26,7 @@ public class NotificationVoucherFlight {
             case "1":
                 System.out.println("Nhập email người nhận thông báo");
                 String email = sc.nextLine();
-                email=sc.nextLine();
+                //email=sc.nextLine();
                 logicNotificationAndVoucher.SendNotificationCancelFlight(email);
                 break;
             case "2":

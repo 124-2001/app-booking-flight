@@ -84,10 +84,10 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight #" + flightCode +
-                "\nFrom: " + fromPlace +
-                "\nTo: " + toPlace +
-                "\nTime: " + time +
-                "\nPrice: " + price;
+        return "Số hiệu chuyến bay: " + flightCode +
+                "\nBay từ: " + fromPlace +
+                "\nBay đến: " + toPlace +
+                "\nThời gian: " + time.getTime() +
+                "\nGiá: " + price;
     }
 }

@@ -44,6 +44,7 @@ public class LogicListFlight {
         return false;
     }
 
+    // tẠO CODE Random add cho flightcode
     public String RandomFlightCode(){
         String str ="ABCDEFGHYJKQMNL123456789";
         String ramdomFlightCode = "";
@@ -67,7 +68,6 @@ public class LogicListFlight {
             flight.setFlightCode(codeFlight);
             System.out.println("Nhập tên chuyến bay : ");
             String nameFlight = sc.nextLine();
-            nameFlight=sc.nextLine();
             flight.setFlightName(nameFlight);
             System.out.println("Nhập điểm xuất phát : ");
             String fromPlace = sc.nextLine();
@@ -75,14 +75,21 @@ public class LogicListFlight {
             System.out.println("Nhập điểm hạ cánh : ");
             String endPlace = sc.nextLine();
             flight.setToPlace(endPlace);
-            System.out.print("Ngày bay (dd/mm/yyyy): ");
+            System.out.println("Ngày bay (dd/mm/yyyy): ");
             String tempDateQuery = sc.nextLine();
             while (DateRegex.dateRegex(tempDateQuery) || DateRegex.realDate(tempDateQuery)) {
                 System.out.println("Vui lòng nhập ngày bay hợp lệ theo định dạng dd/mm/yyyy");
-                System.out.print("Ngày bay (dd/mm/yyyy): ");
+                System.out.println("Ngày bay (dd/mm/yyyy): ");
                 tempDateQuery = sc.nextLine();
             }
-            Calendar dateCal = DateAnalysis.dateToCal(tempDateQuery);
+            System.out.println("Giờ bay (hh:mm): ");
+            String tempTimeQuery = sc.nextLine();
+            while (DateRegex.timeRegex(tempTimeQuery) || DateRegex.realTime(tempTimeQuery)) {
+                System.out.println("Vui lòng nhập giờ bay hợp lệ theo định dạng hh:mm");
+                System.out.println("Giờ bay (hh:mm): ");
+                tempTimeQuery = sc.nextLine();
+            }
+            Calendar dateCal = DateAnalysis.datetimeToCal(tempDateQuery,tempTimeQuery);
             flight.setTime(dateCal);
             System.out.println("Nhập giá tiền : ");
             long price = sc.nextLong();
@@ -121,6 +128,7 @@ public class LogicListFlight {
                 if(code.contains(flight.getFlightCode())){
                     flights.remove(flight);
                     logicFile.DeleteFlightInFile(flights);
+                    // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình
                     File file = new File("list_flight.txt");
                     // if file  exists, then create it
                     if (!file.exists()) {
@@ -157,7 +165,6 @@ public class LogicListFlight {
                 System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
                 System.out.println("Tên chuyến bay : "+flight.getFlightName());
                 System.out.println("Điểm xuất phát : "+flight.getFromPlace()+"--------Điểm hạ cánh : "+flight.getToPlace());
-                //System.out.println("Ngày bay : "+dateRegex.getDate(flight.getTime().getTimeInMillis(),"dd/MM/yyyy"));
                 System.out.println("Ngày bay : "+formatter.format(flight.getTime().getTime()));
                 System.out.println("Ngày bay : "+flight.getTime().getTime());
                 System.out.println("Giá vé : "+flight.getPrice());

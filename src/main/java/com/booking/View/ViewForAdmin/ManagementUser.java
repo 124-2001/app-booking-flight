@@ -29,7 +29,7 @@ public class ManagementUser {
              case "2":
                  System.out.println("Nhập email người dùng muốn xoá : ");
                  String email = sc.nextLine();
-                 email = sc.nextLine();
+                 //email = sc.nextLine();
                  logicListUser.DeleteUserByEmail(email);
                  break;
              case "3":

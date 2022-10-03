@@ -1,1 +1,2 @@
 {"flightCode":"CQ41G","flightName":"","fromPlace":"HCM","toPlace":"HN","time":{"year":2022,"month":0,"dayOfMonth":2,"hourOfDay":0,"minute":48,"second":24},"price":700000,"numberOfSeats":80}
+{"flightCode":"6DEJ6","flightName":"HN-DN","fromPlace":"HN","toPlace":"DN","time":{"year":2022,"month":9,"dayOfMonth":11,"hourOfDay":9,"minute":35,"second":46},"price":500000,"numberOfSeats":50}
