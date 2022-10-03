@@ -1,2 +1,3 @@
 {"voucherCode":"561AGHMB12CK","valueVoucher":5}
 {"voucherCode":"4C1JDG8GBL3J","valueVoucher":8}
+{"voucherCode":"GQ8FFYK6MB54","valueVoucher":10}
