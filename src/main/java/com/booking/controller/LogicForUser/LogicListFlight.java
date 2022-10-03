@@ -67,7 +67,7 @@ public class LogicListFlight {
         return randomised;
     }
     public void selectFlight(Flight selFlight, int noSeats, Voucher selVoucher) {
-        float percentage = 1-(selVoucher.getValueVoucher()/100);
+        float percentage = 1-((float) selVoucher.getValueVoucher()/100);
         float discountedPrice = selFlight.getPrice()*noSeats*percentage;
         String bookingCode = generateBookingCode();
         Booking booked = new Booking(selFlight.getFlightCode(),selFlight.getFlightName(),

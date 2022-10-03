@@ -76,7 +76,7 @@ public class BookingWizard {
             else {
                 selectedVoucher = tempLLF.verifyVoucher(tempVoucher);
                 if (selectedVoucher != null) {
-                    float discount = selected.getPrice()*amount*(selectedVoucher.getValueVoucher()/100);
+                    float discount = selected.getPrice()*amount*((float) selectedVoucher.getValueVoucher()/100);
                     System.out.printf("Mã khuyến mãi áp dụng thành công. " +
                                     "Bạn được giảm %d%% cho chuyến bay này.\n",
                                     selectedVoucher.getValueVoucher());
