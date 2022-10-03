@@ -68,7 +68,6 @@ public class LogicListFlight {
             flight.setFlightCode(codeFlight);
             System.out.println("Nhập tên chuyến bay : ");
             String nameFlight = sc.nextLine();
-            nameFlight=sc.nextLine();
             flight.setFlightName(nameFlight);
             System.out.println("Nhập điểm xuất phát : ");
             String fromPlace = sc.nextLine();
@@ -76,14 +75,21 @@ public class LogicListFlight {
             System.out.println("Nhập điểm hạ cánh : ");
             String endPlace = sc.nextLine();
             flight.setToPlace(endPlace);
-            System.out.print("Ngày bay (dd/mm/yyyy): ");
+            System.out.println("Ngày bay (dd/mm/yyyy): ");
             String tempDateQuery = sc.nextLine();
             while (DateRegex.dateRegex(tempDateQuery) || DateRegex.realDate(tempDateQuery)) {
                 System.out.println("Vui lòng nhập ngày bay hợp lệ theo định dạng dd/mm/yyyy");
-                System.out.print("Ngày bay (dd/mm/yyyy): ");
+                System.out.println("Ngày bay (dd/mm/yyyy): ");
                 tempDateQuery = sc.nextLine();
             }
-            Calendar dateCal = DateAnalysis.dateToCal(tempDateQuery);
+            System.out.println("Giờ bay (hh:mm): ");
+            String tempTimeQuery = sc.nextLine();
+            while (DateRegex.timeRegex(tempTimeQuery) || DateRegex.realTime(tempTimeQuery)) {
+                System.out.println("Vui lòng nhập giờ bay hợp lệ theo định dạng hh:mm");
+                System.out.println("Giờ bay (hh:mm): ");
+                tempTimeQuery = sc.nextLine();
+            }
+            Calendar dateCal = DateAnalysis.datetimeToCal(tempDateQuery,tempTimeQuery);
             flight.setTime(dateCal);
             System.out.println("Nhập giá tiền : ");
             long price = sc.nextLong();

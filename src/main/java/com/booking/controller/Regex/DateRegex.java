@@ -39,16 +39,34 @@ public class DateRegex {
         boolean valid = bYear && bMonth && bDay;
         return !valid;
     }
-
-    public  String getDate(long milliSeconds, String dateFormat)
-    {
-        // Create a DateFormatter object for displaying date in specified format.
-        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
-
-        // Create a calendar object that will convert the date and time value in milliseconds to date.
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(milliSeconds);
-        return formatter.format(calendar.getTime());
+    public static boolean timeRegex(String inputTime) {
+        String regexTime = "^[0-9]{1,2}(:|\\.)[0-9]{1,2}$";
+        // accepts both hh:mm and hh.mm (only 24-hour format)
+        boolean valid = Pattern.matches(regexTime,inputTime);
+        return !valid; // Match regex => false => while loop won't be activated
     }
+    public static boolean realTime(String inputTime) {
+        int[] analysedTime = DateAnalysis.timeToInt(inputTime);
+
+        boolean bHour = analysedTime[0] >= 0 && analysedTime[0] <= 23;
+        // Hour range from 0 to 23
+
+        boolean bMin = analysedTime[1] >= 0 && analysedTime[1] <= 59;
+        // Minute range from 0 to 59
+
+        boolean valid = bHour && bMin;
+        return !valid;
+    }
+
+//    public  String getDate(long milliSeconds, String dateFormat)
+//    {
+//        // Create a DateFormatter object for displaying date in specified format.
+//        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+//
+//        // Create a calendar object that will convert the date and time value in milliseconds to date.
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(milliSeconds);
+//        return formatter.format(calendar.getTime());
+//    }
 
 }
