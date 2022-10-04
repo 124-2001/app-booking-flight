@@ -19,7 +19,9 @@ public class SignIn {
     public void signIn() throws IOException {
         Scanner scan = new Scanner (System.in);
         Account account = new Account();
-        System.out.println("Đăng nhập");
+        System.out.println("-----------------------------------------");
+        System.out.println("|---------------ĐĂNG NHẬP---------------|");
+        System.out.println("-----------------------------------------");
         System.out.print("Địa chỉ email: ");
         String tempEmail = scan.nextLine();
         while (EmailRegex.emailRegex(tempEmail)) {

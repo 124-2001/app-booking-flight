@@ -9,15 +9,15 @@ import java.util.Scanner;
 public class MenuOptionUser {
     public void menuOptionUser() throws FileNotFoundException {
         do {
-            System.out.println("---------------------------------------");
-            System.out.println("---------------MENU USER---------------");
-            System.out.println("---------------------------------------");
-            System.out.println("--  1) Đặt vé                        --");
-            System.out.println("--  2) Thông báo                     --");
-            System.out.println("--  3) Chuyến bay                    --");
-            System.out.println("--  4) Thông tin tài khoản           --");
-            System.out.println("--  5) Đăng xuất                     --");
-            System.out.println("---------------------------------------");
+            System.out.println("-----------------------------------------");
+            System.out.println("----------------MENU USER----------------");
+            System.out.println("-----------------------------------------");
+            System.out.println("--    1) Đặt vé máy bay                --");
+            System.out.println("--    2) Thông báo                     --");
+            System.out.println("--    3) Quản lý chuyến bay            --");
+            System.out.println("--    4) Quản lý tài khoản             --");
+            System.out.println("--    5) Đăng xuất                     --");
+            System.out.println("-----------------------------------------");
             System.out.print("Nhập lựa chọn: ");
             Scanner scan = new Scanner(System.in);
             int n = scan.nextInt();

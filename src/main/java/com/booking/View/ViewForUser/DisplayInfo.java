@@ -20,16 +20,23 @@ public  class  DisplayInfo {
         MenuOptionUser menu = new MenuOptionUser();
         do {
             if (LogicUserInfo.verifyChoice1(ans)) {
-                System.out.println("******* Quản lý thông tin cá nhân ******");
+                System.out.println("-----------------------------------------");
+                System.out.println("|------ QUẢN LÝ THÔNG TIN CÁ NHÂN ------|");
+                System.out.println("-----------------------------------------");
                 System.out.println("Email: " + signedIn.getEmail());
                 System.out.println("Mật khẩu: ********");
+                System.out.println("*****************************************");
             }
-            System.out.println("Bạn có muốn thay đổi thông tin? Nhập C nếu có, nhập K nếu không.");
+            System.out.println("Bạn có muốn thay đổi thông tin cá nhân? " +
+                    "Nhập C nếu có, nhập K nếu không.");
             ans = scan.nextLine();
             switch (ans) {
                 case "C","c","1" -> {
                     int ans2;
                     do {
+                        System.out.println("-----------------------------------------");
+                        System.out.println("|------ THAY ĐỔI THÔNG TIN CÁ NHÂN -----|");
+                        System.out.println("-----------------------------------------");
                         System.out.println("Vui lòng chọn nội dung muốn thay đổi.");
                         System.out.println("1. Email");
                         System.out.println("2. Mật khẩu");
@@ -41,8 +48,7 @@ public  class  DisplayInfo {
                         }
                         scan.nextLine();
                         if (ans2 == 3) {
-                            System.out.println("Đang quay trở về màn hình chính...");
-                            return;
+                            break;
                         }
                         switch (ans2) {
                             case 1 -> editEmail();
@@ -64,6 +70,7 @@ public  class  DisplayInfo {
         Scanner scan = new Scanner (System.in);
         String tempEmail; int confirm = 1;
         do {
+            System.out.println("************* Thay đổi email ************");
             System.out.print("Nhập email mới: ");
             tempEmail = scan.nextLine();
             if (EmailRegex.emailRegex(tempEmail))
@@ -92,17 +99,20 @@ public  class  DisplayInfo {
             }
         } while (true);
 
+        System.out.println("*****************************************");
         System.out.println("Đang đổi Email. 0% hoàn thành...");
         try {
             LogicUserInfo.editEmail(signedIn.getEmail(),tempEmail);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("*****************************************");
         signedIn.setEmail(tempEmail);
     }
     public void editPassword() {
         Scanner scan = new Scanner (System.in);
         String tempPassword, tempPassword2, verify;
+        System.out.println("*********** Thay đổi mật khẩu ***********");
         System.out.print("Nhập mật khẩu cũ: ");
         verify = scan.nextLine();
         if (!verify.equals(signedIn.getPassWord())) {
@@ -132,7 +142,9 @@ public  class  DisplayInfo {
             else break;
         } while (true);
 
+        System.out.println("*****************************************");
         System.out.println("Đang đổi mật khẩu. 0% hoàn thành...");
         LogicUserInfo.editPassWord(signedIn.getPassWord(),tempPassword);
+        System.out.println("*****************************************");
     }
 }

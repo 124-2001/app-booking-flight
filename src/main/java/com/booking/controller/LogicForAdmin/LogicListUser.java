@@ -70,7 +70,7 @@ public class LogicListUser {
             //trở về màn hình ...
             ManagementUser managementUser = new ManagementUser();
             managementUser.ViewManagement();
-        } else if (!email.contains("@gmail.com")) {
+        } else if (EmailRegex.emailRegex(email)) {
             System.out.println("Không đúng định dạng . ");
             //trở về màn hình ...
             ManagementUser managementUser = new ManagementUser();
