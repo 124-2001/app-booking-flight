@@ -118,6 +118,7 @@ public class LogicListFlight {
 
     public void CancelFlight() throws IOException {
         List<Flight> flights= logicFile.ConvertFileToFlight();
+        List<Booking> bookings= logicFile.ConvertFileToBooking();
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
@@ -128,6 +129,24 @@ public class LogicListFlight {
             int count =0;
             for (Flight flight : flights) {
                 if(code.contains(flight.getFlightCode())){
+                    if(FindUserByFlight(flight.getFlightCode())!=null){
+                        // tìm và gửi thông báo đến user
+                        LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
+                        logicNotificationAndVoucher.SendNotificationCancelFlight(FindUserByFlight(flight.getFlightCode()),flight.getFlightCode());
+                        // hủy hoặc sưả trong list booking
+                        for (Booking booking : bookings) {
+                            if(booking.getUserEmail().equals(FindUserByFlight(flight.getFlightCode()))){
+                                bookings.remove(booking);
+                                logicFile.DeleteBookingInFile(bookings);
+                                // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình
+                                File file = new File("list_booking.txt");
+                                // if file  exists, then create it
+                                if (!file.exists()) {
+                                    file.createNewFile();
+                                }
+                            }
+                        }
+                    }
                     flights.remove(flight);
                     logicFile.DeleteFlightInFile(flights);
                     // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình
@@ -181,6 +200,7 @@ public class LogicListFlight {
     public void ChangeFlight() throws FileNotFoundException {
         try {
             List<Flight> flights= logicFile.ConvertFileToFlight();
+            List<Booking> bookings= logicFile.ConvertFileToBooking();
             if(CheckListFlightNull()){
                 System.out.println("Danh sách đang rỗng . ");
                 //trở về màn hình ...
@@ -228,6 +248,24 @@ public class LogicListFlight {
                         flight.setPrice(price);
                         System.out.println("Nhập số ghế ngồi tối đa : ");
                         int seats = sc.nextInt();
+                        //nếu chuyến bay đã đưc đặt thì số ghế tối đa phải trừ đi số ghế của những khách đã đặt
+                        //flight.setNumberOfSeats(seats);
+                        //gửi thoong báo nếu có user đăng ký chuyến bay
+                        if(FindUserByFlight(flight.getFlightCode())!=null){
+                            LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
+                            logicNotificationAndVoucher.SendNotificationChangeFlight(FindUserByFlight(flightCode),flightCode);
+                            // sửa vào file list booking
+                            for (Booking booking : bookings) {
+                                if(booking.getFlightCode().equals(flightCode)){
+                                    booking.setFlightName(flightName);
+                                    booking.setFromPlace(fromPlace);
+                                    booking.setToPlace(endPlace);
+                                    booking.setTime(dateCal);
+                                    seats-=booking.getNumberOfSeats();
+                                    logicFile.DeleteBookingInFile(bookings);
+                                }
+                            }
+                        }
                         flight.setNumberOfSeats(seats);
                         //AddFile mới
                         logicFile.DeleteFlightInFile(flights);
@@ -248,15 +286,20 @@ public class LogicListFlight {
         }
     }
 
-    public void FindUserToFlight(String flightCode) throws IOException {
-        //List<Flight> flights= logicFile.ConvertFileToFlight();
+    public String FindUserByFlight(String flightCode) throws IOException {
+        // List<Flight> flights= logicFile.ConvertFileToFlight();
+
+        //clone list booking
         List<Booking> bookings= logicFile.ConvertFileToBooking();
+        // khởi tạo để gửi thông báo
         LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
         for (Booking booking : bookings) {
             if (booking.getFlightCode().equals(flightCode)){
-                logicNotificationAndVoucher.SendNotification(booking.getUserEmail());
+                //logicNotificationAndVoucher.SendNotification(booking.getUserEmail());
+                return booking.getUserEmail();
             }
         }
+        return null;
     }
 
 }

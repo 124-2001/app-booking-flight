@@ -5,12 +5,13 @@ import com.booking.controller.Regex.DateRegex;
 import com.booking.model.Flight;
 import com.booking.model.Voucher;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BookingWizard {
-    public void bookingWizard() {
+    public void bookingWizard() throws FileNotFoundException {
         Scanner scan = new Scanner (System.in);
         System.out.println("**************** Đặt vé ****************");
         System.out.println("Tra cứu chuyến bay");

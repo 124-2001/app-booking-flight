@@ -93,13 +93,27 @@ public class LogicNotificationAndVoucher {
             AddVoucher();
         }
     }
-    public void SendNotificationCancelFlight(String email,String flightCode) throws FileNotFoundException {
+    public void SendNotificationChangeFlight(String email,String flightCode) throws FileNotFoundException {
         //clone user
         List<User> users= logicFile.ConvertFileToUser();
         //
         for (User user : users) {
             if(user.getEmail().equalsIgnoreCase(email)){
                 String notification = "Chuyến bay "+flightCode+" đã bị thay đổi vui lòng kiểm tra lại .";
+                user.setNotification(notification);
+                logicFile.DeleteUserInFile(users);
+                System.out.println("Thêm thông báo thành công");
+            }
+        }
+    }
+
+    public void SendNotificationCancelFlight(String email,String flightCode) throws FileNotFoundException {
+        //clone user
+        List<User> users= logicFile.ConvertFileToUser();
+        //
+        for (User user : users) {
+            if(user.getEmail().equalsIgnoreCase(email)){
+                String notification = "Chuyến bay "+flightCode+" đã bị hủy vui lòng kiểm tra lại .";
                 user.setNotification(notification);
                 logicFile.DeleteUserInFile(users);
                 System.out.println("Thêm thông báo thành công");

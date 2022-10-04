@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuOptionUser {
-    public void menuOptionUser() {
+    public void menuOptionUser() throws FileNotFoundException {
         do {
             System.out.println("---------------------------------------");
-            System.out.println("---------------MENU USER--------------");
+            System.out.println("---------------MENU USER---------------");
             System.out.println("---------------------------------------");
             System.out.println("--  1) Đặt vé                        --");
             System.out.println("--  2) Thông báo                     --");

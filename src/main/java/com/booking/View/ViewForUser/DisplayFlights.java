@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class DisplayFlights {
     LogicFile tempLF = new LogicFile();
     LogicListFlight tempLLF = new LogicListFlight();
-    public void displayFlights() {
+    public void displayFlights() throws FileNotFoundException {
         System.out.println("********** Quản lý chuyến bay **********");
         List<Booking> bookings;
         int count = 0;
