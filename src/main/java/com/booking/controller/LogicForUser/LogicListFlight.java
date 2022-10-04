@@ -127,9 +127,27 @@ public class LogicListFlight {
         return null;
     }
     public boolean cancelFlight(String bookingCode) {
-        for (Booking temp: bookings)
-            if (temp.getCodeBooking().equals(bookingCode.toUpperCase())) {
-                bookings.remove(temp);
+        for (Booking booking: bookings)
+            if (booking.getCodeBooking().equals(bookingCode.toUpperCase())) {
+                for (Flight flight: flights)
+                    if (booking.getFlightCode().toUpperCase().equals(flight.getFlightCode())) {
+                        int newSeats = flight.getNumberOfSeats() + booking.getNumberOfSeats();
+                        flight.setNumberOfSeats(newSeats);
+                        break;
+                    }
+                try {
+                    logicFile.DeleteFlightInFile(flights);
+                    // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình
+                    File file = new File("list_flight.txt");
+                    // if file  exists, then create it
+                    if (!file.exists()) {
+                        file.createNewFile();
+                    }
+                } catch (IOException e) {
+                    System.out.println("Đã xảy ra lỗi.");
+                }
+
+                bookings.remove(booking);
                 try {
                     logicFile.DeleteBookingInFile(bookings);
                     // nếu xoá hết trong list -> file null -> tạo file trước khi out chương trình

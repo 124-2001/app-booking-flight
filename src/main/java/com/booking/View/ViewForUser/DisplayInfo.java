@@ -99,11 +99,7 @@ public  class  DisplayInfo {
 
         System.out.println("*****************************************");
         System.out.println("Đang đổi Email. 0% hoàn thành...");
-        try {
-            LogicUserInfo.editEmail(signedIn.getEmail(),tempEmail);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        LogicUserInfo.editEmail(signedIn.getEmail(),tempEmail);
         System.out.println("*****************************************");
         signedIn.setEmail(tempEmail);
     }
