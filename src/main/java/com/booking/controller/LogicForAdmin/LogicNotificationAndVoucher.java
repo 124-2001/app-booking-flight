@@ -4,7 +4,6 @@ import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
 import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
-import com.booking.model.Flight;
 import com.booking.model.User;
 import com.booking.model.Voucher;
 

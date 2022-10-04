@@ -1,8 +1,7 @@
 package com.booking.View.ViewMain;
 
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuMain {
@@ -31,7 +30,7 @@ public class MenuMain {
                 register.register();
                 break;
             case "3":
-                System.out.println("HẸN GẶP LẠI");
+                System.out.println("      HẸN GẶP LẠI");
                 System.exit(0);
                 break;
         }

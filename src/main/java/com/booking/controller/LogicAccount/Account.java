@@ -3,10 +3,9 @@ package com.booking.controller.LogicAccount;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.User;
-import com.google.gson.Gson;
+
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
