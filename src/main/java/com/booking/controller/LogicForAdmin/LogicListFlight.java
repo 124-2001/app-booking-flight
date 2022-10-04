@@ -6,6 +6,7 @@ import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.controller.LogicForUser.DateAnalysis;
 import com.booking.controller.Regex.DateRegex;
+import com.booking.model.Booking;
 import com.booking.model.Flight;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.LinkedTransferQueue;
 
 
 public class LogicListFlight {
@@ -227,10 +229,12 @@ public class LogicListFlight {
                         System.out.println("Nhập số ghế ngồi tối đa : ");
                         int seats = sc.nextInt();
                         flight.setNumberOfSeats(seats);
+                        //AddFile mới
+                        logicFile.DeleteFlightInFile(flights);
                         System.out.println("Sửa thông tin thành công . ");
                     }
                 }
-                logicFile.DeleteFlightInFile(flights);
+                //logicFile.DeleteFlightInFile(flights);
                 //System.out.println("Done");
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
@@ -241,6 +245,17 @@ public class LogicListFlight {
             ChangeFlight();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void FindUserToFlight(String flightCode) throws IOException {
+        //List<Flight> flights= logicFile.ConvertFileToFlight();
+        List<Booking> bookings= logicFile.ConvertFileToBooking();
+        LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
+        for (Booking booking : bookings) {
+            if (booking.getFlightCode().equals(flightCode)){
+                logicNotificationAndVoucher.SendNotification(booking.getUserEmail());
+            }
         }
     }
 

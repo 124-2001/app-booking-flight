@@ -8,12 +8,14 @@ import java.util.Scanner;
 public class MenuMain {
     public void DisplayMain() throws IOException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("****************************************");
-        System.out.println("1) Đăng nhập");
-        System.out.println("2) Đăng ký");
-        System.out.println("3) Thoát chương trình");
-        System.out.println("****************************************");
-        System.out.println("NHẬP LỰA CHỌN : ");
+        System.out.println("-----------------------------------------");
+        System.out.println("|-----------APP BOOKING FLIGHT----------|");
+        System.out.println("|---------------------------------------|");
+        System.out.println("|            1) Đăng nhập               |");
+        System.out.println("|            2) Đăng ký                 |");
+        System.out.println("|            3) Thoát chương trình      |");
+        System.out.println("-----------------------------------------");
+        System.out.println("Nhập lựa chọn : ");
         String n = sc.nextLine();
         while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")){
             System.out.println("Nhập lại lựa chọn :");

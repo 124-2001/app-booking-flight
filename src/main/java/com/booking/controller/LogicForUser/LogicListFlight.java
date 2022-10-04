@@ -57,12 +57,23 @@ public class LogicListFlight {
         return matchedFlights;
     }
     public String generateBookingCode() {
+        String randomised;
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        String randomised = "";
-        Random random = new Random();
-        for (int i = 0; i < 5; i++){
-            int n = random.nextInt(characters.length());
-            randomised+=characters.charAt(n);
+        while (true) {
+            randomised = "";
+            Random random = new Random();
+            for (int i = 0; i < 5; i++) {
+                int n = random.nextInt(characters.length());
+                randomised += characters.charAt(n);
+            }
+            int count = 0;
+            for (Booking temp : bookings) {
+                if (temp.getCodeBooking().equals(randomised)) {
+                    count++;
+                    break;
+                }
+            }
+            if (count == 0) break;
         }
         return randomised;
     }

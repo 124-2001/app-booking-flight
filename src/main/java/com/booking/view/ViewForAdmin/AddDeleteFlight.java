@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class AddDeleteFlight {
     public void AddDeleteFlight() throws IOException {
-        System.out.println("***** THÊM HỦY CHUYẾN BAY *****");
-        System.out.println("1) Thêm chuyến bay");
-        System.out.println("2) Hủy chuyến bay");
-        System.out.println("3) Thoát");
-        System.out.println("*******************************");
+        System.out.println("----- THÊM HỦY CHUYẾN BAY -----");
+        System.out.println("-- 1) Thêm chuyến bay        --");
+        System.out.println("-- 2) Hủy chuyến bay         --");
+        System.out.println("-- 3) Thoát                  --");
+        System.out.println("-------------------------------");
         Scanner sc = new Scanner(System.in);
         LogicListFlight logicListFlight= new LogicListFlight();
         MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
