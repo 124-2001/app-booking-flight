@@ -6,7 +6,6 @@ import com.booking.controller.Regex.EmailRegex;
 import com.booking.controller.Regex.PasswordRegex;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,7 +16,6 @@ public  class  DisplayInfo {
     public void displayInfo() {
         Scanner scan = new Scanner(System.in);
         String ans = "c";
-        MenuOptionUser menu = new MenuOptionUser();
         do {
             if (LogicUserInfo.verifyChoice1(ans)) {
                 System.out.println("-----------------------------------------");
@@ -68,7 +66,7 @@ public  class  DisplayInfo {
     Account account = new Account();
     public void editEmail() {
         Scanner scan = new Scanner (System.in);
-        String tempEmail; int confirm = 1;
+        String tempEmail; int confirm;
         do {
             System.out.println("************* Thay đổi email ************");
             System.out.print("Nhập email mới: ");

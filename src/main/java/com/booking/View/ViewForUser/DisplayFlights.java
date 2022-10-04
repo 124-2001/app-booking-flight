@@ -46,14 +46,11 @@ public class DisplayFlights {
         do {
             try {
                 ans = scan.nextInt();
-                if (ans != 1 && ans != 0) {
+                if (ans != 1 && ans != 0)
                     System.out.println("Vui lòng chỉ nhập giá trị 1 hoặc 0.");
-                    continue;
-                }
                 else break;
             } catch (InputMismatchException e) {
                 System.out.println("Vui lòng chỉ nhập giá trị 1 hoặc 0.");
-                continue;
             }
         } while (true);
         switch (ans) {
@@ -75,7 +72,7 @@ public class DisplayFlights {
         System.out.println("|------------ HỦY CHUYẾN BAY -----------|");
         System.out.println("-----------------------------------------");
         Scanner scan = new Scanner(System.in);
-        String tempBookingCode = null;
+        String tempBookingCode;
         do {
             System.out.print("Nhập mã đặt vé của chuyến bay cần hủy " +
                     "(Nhập 0 để quay về màn hình chính): ");

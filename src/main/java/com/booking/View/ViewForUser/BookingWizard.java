@@ -46,6 +46,7 @@ public class BookingWizard {
         Flight selected;
         do {
             System.out.println("*****************************************");
+            System.out.println("Tra cứu thành công.");
             System.out.println("Vui lòng nhập mã chuyến bay mong muốn. " +
                     "Nhập 0 để quay trở về màn hình chính.");
             String tempFlightCode = scan.nextLine();
@@ -66,7 +67,7 @@ public class BookingWizard {
             amount = scan.nextInt();
             scan.nextLine();
             if (amount < 1 || amount > selected.getNumberOfSeats()) {
-                System.out.printf("Vui lòng chỉ lựa chọn số lượng giữa 1 và %d.",selected.getNumberOfSeats());
+                System.out.printf("Vui lòng chỉ lựa chọn số lượng giữa 1 và %d.\n",selected.getNumberOfSeats());
             }
             else break;
         } while (true);

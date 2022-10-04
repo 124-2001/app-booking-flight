@@ -51,7 +51,8 @@ public class LogicListFlight {
                     && temp.getToPlace().equalsIgnoreCase(toPlace)
                     && temp.getTime().get(Calendar.YEAR) == dateCal.get(Calendar.YEAR)
                     && temp.getTime().get(Calendar.MONTH) == dateCal.get(Calendar.MONTH)
-                    && temp.getTime().get(Calendar.DATE) == dateCal.get(Calendar.DATE);
+                    && temp.getTime().get(Calendar.DATE) == dateCal.get(Calendar.DATE)
+                    && temp.getNumberOfSeats() > 0;
             if (b) matchedFlights.add(temp);
         }
         return matchedFlights;
@@ -83,28 +84,28 @@ public class LogicListFlight {
         String bookingCode = generateBookingCode();
         Booking booked = new Booking(selFlight.getFlightCode(),selFlight.getFlightName(),
                 selFlight.getFromPlace(),selFlight.getToPlace(),selFlight.getTime(),discountedPrice,
-                selFlight.getNumberOfSeats(),signedIn.getEmail(),selVoucher.getVoucherCode(),
-                bookingCode);
+                noSeats,signedIn.getEmail(),selVoucher.getVoucherCode(),bookingCode);
         bookings.add(booked);
         logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(booked),"list_booking.txt");
         System.out.println("Đang đặt vé. 33% hoàn thành...");
 
-        vouchers.remove(selVoucher);
-        try {
-            logicFile.DeleteVoucherInFile(vouchers);
-        } catch (FileNotFoundException e) {
-            System.out.println("Không tìm thấy file cần sửa.");
+        if (selVoucher.getVoucherCode().equals("0")) {
+            vouchers.remove(selVoucher);
+            try {
+                logicFile.DeleteVoucherInFile(vouchers);
+            } catch (FileNotFoundException e) {
+                System.out.println("Không tìm thấy file cần sửa.");
+            }
         }
         System.out.println("Đang đặt vé. 66% hoàn thành...");
-        // Xóa voucher
+        // Xóa voucher nếu dùng
 
-        for (Flight temp: flights) {
+        for (Flight temp: flights)
             if (temp == selFlight) {
                 int left = temp.getNumberOfSeats() - noSeats;
                 temp.setNumberOfSeats(left);
                 break;
             }
-        }
         try {
             logicFile.DeleteFlightInFile(flights);
         } catch (FileNotFoundException e) {

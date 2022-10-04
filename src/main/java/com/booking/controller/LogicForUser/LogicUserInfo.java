@@ -42,7 +42,7 @@ public class LogicUserInfo {
         user.setPosition_id(1);
         logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(user),"list_user.txt");
         System.out.println("Đang đổi Email. 100% hoàn thành.");
-        System.out.println("Đổi mật khẩu thành công!");
+        System.out.println("Đổi địa chỉ email thành công!");
         // Thêm người dùng mới với email mới, password và perm không đổi
     }
     public static void editPassWord(String oldP,String newP) {
