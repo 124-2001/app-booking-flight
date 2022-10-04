@@ -9,12 +9,12 @@ import java.util.Scanner;
 public class NotificationVoucherFlight {
     public void ViewNotificationVoucher() throws IOException {
         LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
-        System.out.println("*******************************");
-        System.out.println("1) Gửi thông báo cho người dùng");
-        System.out.println("2) Tạo mã Voucher Khuyến Mại");
-        System.out.println("3) Danh sách Voucher Khuyến Mại");
-        System.out.println("4) Thoát");
-        System.out.println("*******************************");
+        System.out.println("----------------------------------");
+        System.out.println("-1) Gửi thông báo cho người dùng--");
+        System.out.println("-2) Tạo mã Voucher Khuyến Mại   --");
+        System.out.println("-3) Danh sách Voucher Khuyến Mại--");
+        System.out.println("-4) Thoát                       --");
+        System.out.println("----------------------------------");
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập lựa chọn: ");
         String n = sc.nextLine();
@@ -27,7 +27,7 @@ public class NotificationVoucherFlight {
                 System.out.println("Nhập email người nhận thông báo");
                 String email = sc.nextLine();
                 //email=sc.nextLine();
-                logicNotificationAndVoucher.SendNotificationCancelFlight(email);
+                logicNotificationAndVoucher.SendNotification(email);
                 break;
             case "2":
                 logicNotificationAndVoucher.AddVoucher();

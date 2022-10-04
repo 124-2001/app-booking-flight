@@ -21,7 +21,7 @@ public class LogicNotificationAndVoucher {
     Account account= new Account();
 
     //NOTIFICATION
-    public void SendNotificationCancelFlight(String email) throws IOException {
+    public void SendNotification(String email) throws IOException {
         //clone list user
         List<User> users= logicFile.ConvertFileToUser();
         //kiểm tra email tồn tại thì gửi
@@ -93,9 +93,17 @@ public class LogicNotificationAndVoucher {
             AddVoucher();
         }
     }
-    public void VoucherPayment(Flight flight, Voucher voucher){
-        if(CheckVoucherIsExist(voucher.getVoucherCode())){
-            flight.setPrice(flight.getPrice()*((100-voucher.getValueVoucher())/100));
+    public void SendNotificationCancelFlight(String email,String flightCode) throws FileNotFoundException {
+        //clone user
+        List<User> users= logicFile.ConvertFileToUser();
+        //
+        for (User user : users) {
+            if(user.getEmail().equalsIgnoreCase(email)){
+                String notification = "Chuyến bay "+flightCode+" đã bị thay đổi vui lòng kiểm tra lại .";
+                user.setNotification(notification);
+                logicFile.DeleteUserInFile(users);
+                System.out.println("Thêm thông báo thành công");
+            }
         }
     }
 

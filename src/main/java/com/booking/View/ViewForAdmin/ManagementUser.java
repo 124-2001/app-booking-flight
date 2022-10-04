@@ -10,11 +10,11 @@ import java.util.Scanner;
 public class ManagementUser {
      public void ViewManagement() throws IOException {
          LogicListUser logicListUser = new LogicListUser();
-         System.out.println("****************************");
-         System.out.println("1) Danh sách list user ");
-         System.out.println("2) Xoá người dùng ");
-         System.out.println("3) Thoát");
-         System.out.println("**************************");
+         System.out.println("----------------------------");
+         System.out.println("-- 1) Danh sách list user --");
+         System.out.println("-- 2) Xoá người dùng      --");
+         System.out.println("-- 3) Thoát               --");
+         System.out.println("----------------------------");
          Scanner sc = new Scanner(System.in);
          System.out.print("Nhập lựa chọn: ");
          String n = sc.nextLine();
