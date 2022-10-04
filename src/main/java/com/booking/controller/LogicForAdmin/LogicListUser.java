@@ -45,15 +45,16 @@ public class LogicListUser {
             int count =1;
             for (User user : users) {
                 if(user.getPosition_id()==1){
-                    System.out.println("--------------------------");
+                    System.out.println("***************************");
                     System.out.println("STT : "+count);
                     System.out.println("Email : "+user.getEmail());
                     System.out.println("Password : "+user.getPassWord());
-                    System.out.println("--------------------------");
+                    System.out.println("***************************");
                     count++;
                 }
             }
             //trở về màn hnh ...
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
             ManagementUser managementUser= new ManagementUser();
             managementUser.ViewManagement();
         }
@@ -73,6 +74,7 @@ public class LogicListUser {
         } else if (EmailRegex.emailRegex(email)) {
             System.out.println("Không đúng định dạng . ");
             //trở về màn hình ...
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
             ManagementUser managementUser = new ManagementUser();
             managementUser.ViewManagement();
         } else {
@@ -85,6 +87,7 @@ public class LogicListUser {
                 }
             }
             //trở về màn hình ...
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
             ManagementUser managementUser = new ManagementUser();
             managementUser.ViewManagement();
         }

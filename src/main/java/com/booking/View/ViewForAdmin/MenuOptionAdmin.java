@@ -15,7 +15,7 @@ public class MenuOptionAdmin {
         NotificationVoucherFlight notificationVoucherFlight= new NotificationVoucherFlight();
         MenuMain menuMain = new MenuMain();
         System.out.println("---------------------------------------");
-        System.out.println("---------------MENU ADMIN--------------");
+        System.out.println("-------------- MENU ADMIN -------------");
         System.out.println("---------------------------------------");
         System.out.println("--1) Thêm , hủy chuyến bay           --");
         System.out.println("--2) Sửa thông tin chuyến bay        --");

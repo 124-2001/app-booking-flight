@@ -104,8 +104,9 @@ public class LogicListFlight {
             logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(flight),"list_flight.txt");
             System.out.println("Chuyến bay được thêm thành công");
             // sau đó trở về màn hình
-            MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
-            menuOptionAdmin.MenuOptionAdmin();
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
+            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+            addDeleteFlight.AddDeleteFlight();
         }
         catch (InputMismatchException e){
             System.out.println("Nhập sai cú pháp vui lòng nhập lại");
@@ -122,6 +123,9 @@ public class LogicListFlight {
         if(CheckListFlightNull()){
             System.out.println("Danh sách đang rỗng . ");
             //trở về màn hình ...
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
+            AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
+            addDeleteFlight.AddDeleteFlight();
         }
         else {
             System.out.println("Nhập mã chuyến bay để huỷ : ");
@@ -132,7 +136,10 @@ public class LogicListFlight {
                     if(FindUserByFlight(flight.getFlightCode())!=null){
                         // tìm và gửi thông báo đến user
                         LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
-                        logicNotificationAndVoucher.SendNotificationCancelFlight(FindUserByFlight(flight.getFlightCode()),flight.getFlightCode());
+                        List<String> listUserEmail = FindUserByFlight(code);
+                        for (String email : listUserEmail) {
+                            logicNotificationAndVoucher.SendNotificationCancelFlight(email,code);
+                        }
                         // hủy hoặc sưả trong list booking
                         for (Booking booking : bookings) {
                             if(booking.getUserEmail().equals(FindUserByFlight(flight.getFlightCode()))){
@@ -164,6 +171,7 @@ public class LogicListFlight {
                 System.out.println("Không tìm thấy chuyến bay phù hợp . ");
             }
             ///trở về màn hình ...
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
             AddDeleteFlight addDeleteFlight = new AddDeleteFlight();
             addDeleteFlight.AddDeleteFlight();
         }
@@ -192,6 +200,7 @@ public class LogicListFlight {
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());
                 System.out.println("*****************************************");
             }
+            System.out.println("Đang quay trở về màn hình chính...");
             MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
             menuOptionAdmin.MenuOptionAdmin();
         }
@@ -204,6 +213,7 @@ public class LogicListFlight {
             if(CheckListFlightNull()){
                 System.out.println("Danh sách đang rỗng . ");
                 //trở về màn hình ...
+                System.out.println("Đang quay trở về màn hình chính...");
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
             }
@@ -212,6 +222,7 @@ public class LogicListFlight {
                 String flightCode = sc.nextLine();
                 if(!CheckListFightCodeIsExist(flightCode)){
                     System.out.println("Mã chuyến bay không tồn tại .");
+                    System.out.println("Đang quay trở về màn hình chính...");
                     MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                     menuOptionAdmin.MenuOptionAdmin();
                 }
@@ -249,11 +260,13 @@ public class LogicListFlight {
                         System.out.println("Nhập số ghế ngồi tối đa : ");
                         int seats = sc.nextInt();
                         //nếu chuyến bay đã đưc đặt thì số ghế tối đa phải trừ đi số ghế của những khách đã đặt
-                        //flight.setNumberOfSeats(seats);
                         //gửi thoong báo nếu có user đăng ký chuyến bay
                         if(FindUserByFlight(flight.getFlightCode())!=null){
                             LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
-                            logicNotificationAndVoucher.SendNotificationChangeFlight(FindUserByFlight(flightCode),flightCode);
+                            List<String> listUserEmail = FindUserByFlight(flightCode);
+                            for (String email : listUserEmail) {
+                                logicNotificationAndVoucher.SendNotificationChangeFlight(email,flightCode);
+                            }
                             // sửa vào file list booking
                             for (Booking booking : bookings) {
                                 if(booking.getFlightCode().equals(flightCode)){
@@ -272,8 +285,7 @@ public class LogicListFlight {
                         System.out.println("Sửa thông tin thành công . ");
                     }
                 }
-                //logicFile.DeleteFlightInFile(flights);
-                //System.out.println("Done");
+                System.out.println("Đang quay trở về màn hình chính...");
                 MenuOptionAdmin menuOptionAdmin = new MenuOptionAdmin();
                 menuOptionAdmin.MenuOptionAdmin();
             }
@@ -286,9 +298,9 @@ public class LogicListFlight {
         }
     }
 
-    public String FindUserByFlight(String flightCode) throws IOException {
+    public List<String> FindUserByFlight(String flightCode) throws IOException {
         // List<Flight> flights= logicFile.ConvertFileToFlight();
-
+        List<String> listUserEmail = new ArrayList<>();
         //clone list booking
         List<Booking> bookings= logicFile.ConvertFileToBooking();
         // khởi tạo để gửi thông báo
@@ -296,10 +308,10 @@ public class LogicListFlight {
         for (Booking booking : bookings) {
             if (booking.getFlightCode().equals(flightCode)){
                 //logicNotificationAndVoucher.SendNotification(booking.getUserEmail());
-                return booking.getUserEmail();
+                listUserEmail.add(booking.getUserEmail());
             }
         }
-        return null;
+        return listUserEmail;
     }
 
 }

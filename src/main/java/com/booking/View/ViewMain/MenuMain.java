@@ -15,7 +15,7 @@ public class MenuMain {
         System.out.println("|            2) Đăng ký                 |");
         System.out.println("|            3) Thoát chương trình      |");
         System.out.println("-----------------------------------------");
-        System.out.println("Nhập lựa chọn : ");
+        System.out.print("Nhập lựa chọn : ");
         String n = sc.nextLine();
         while (!n.equals("1")&&!n.equals("2")&&!n.equals("3")){
             System.out.println("Nhập lại lựa chọn :");
