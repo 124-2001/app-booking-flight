@@ -48,6 +48,7 @@ public class LogicListUser {
                     System.out.println("--------------------------");
                     System.out.println("STT : "+count);
                     System.out.println("Email : "+user.getEmail());
+                    System.out.println("Password : "+user.getPassWord());
                     System.out.println("--------------------------");
                     count++;
                 }

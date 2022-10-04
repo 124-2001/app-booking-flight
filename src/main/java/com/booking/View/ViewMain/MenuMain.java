@@ -29,6 +29,7 @@ public class MenuMain {
                 register.register();
                 break;
             case "3":
+                System.out.println("HẸN GẶP LẠI");
                 System.exit(0);
                 break;
         }
