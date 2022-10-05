@@ -1,6 +1,5 @@
 package com.booking.View.ViewMain;
 
-
 import java.io.IOException;
 import java.util.Scanner;
 

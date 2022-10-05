@@ -89,7 +89,7 @@ public class LogicListFlight {
         logicFile.WriteStringJsonToFile(logicJson.ConvertObjectToStringJson(booked),"list_booking.txt");
         System.out.println("Đang đặt vé. 33% hoàn thành...");
 
-        if (selVoucher.getVoucherCode().equals("0")) {
+        if (!selVoucher.getVoucherCode().equals("0")) {
             vouchers.remove(selVoucher);
             try {
                 logicFile.DeleteVoucherInFile(vouchers);
