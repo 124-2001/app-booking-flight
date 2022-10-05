@@ -3,10 +3,9 @@ package com.booking.controller.LogicAccount;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
 import com.booking.model.User;
-import com.google.gson.Gson;
+
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
@@ -16,7 +15,7 @@ public class Account {
     public boolean CheckUserPassword(String email, String passWord) throws FileNotFoundException {
         List<User> users= logicFile.ConvertFileToUser();
         for (User user : users) {
-            if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().equals(passWord)){
+            if(user.getEmail().toLowerCase().equalsIgnoreCase(email.trim())&& user.getPassWord().equals(passWord)){
                return true;
             }
         }
@@ -26,7 +25,7 @@ public class Account {
     public boolean CheckPositionUser(String email,String passWord) throws FileNotFoundException {
         List<User> users= logicFile.ConvertFileToUser();
         for (User user : users) {
-            if(user.getEmail().toLowerCase().equalsIgnoreCase(email)&& user.getPassWord().toLowerCase().equalsIgnoreCase(passWord)){
+            if(user.getEmail().toLowerCase().equalsIgnoreCase(email.trim())&& user.getPassWord().toLowerCase().equalsIgnoreCase(passWord)){
                 if(user.getPosition_id()==0){
                     return true;
                 }
@@ -40,7 +39,7 @@ public class Account {
     public boolean CheckEmailIsExist(String email) throws FileNotFoundException {
         List<User> users= logicFile.ConvertFileToUser();
         for (User user : users) {
-            if(user.getEmail().equalsIgnoreCase(email)&&user.getPosition_id()==1){
+            if(user.getEmail().equalsIgnoreCase(email.trim())&&user.getPosition_id()==1){
                 return false;
             }
         }

@@ -4,7 +4,6 @@ import com.booking.View.ViewForAdmin.NotificationVoucherFlight;
 import com.booking.controller.LogicAccount.Account;
 import com.booking.controller.LogicData.LogicFile;
 import com.booking.controller.LogicData.LogicJson;
-import com.booking.model.Flight;
 import com.booking.model.User;
 import com.booking.model.Voucher;
 
@@ -85,6 +84,7 @@ public class LogicNotificationAndVoucher {
             //vouchers.add(voucher);
             System.out.println("Tạo mã voucher thành công !");
             //trở về màn hình ...
+            System.out.println("Đang quay trở về màn hình tuỳ chọn...");
             NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
             notificationVoucherFlight.ViewNotificationVoucher();
         }
@@ -102,7 +102,6 @@ public class LogicNotificationAndVoucher {
                 String notification = "Chuyến bay "+flightCode+" đã bị thay đổi vui lòng kiểm tra lại .";
                 user.setNotification(notification);
                 logicFile.DeleteUserInFile(users);
-                System.out.println("Thêm thông báo thành công");
             }
         }
     }
@@ -116,7 +115,6 @@ public class LogicNotificationAndVoucher {
                 String notification = "Chuyến bay "+flightCode+" đã bị hủy vui lòng kiểm tra lại .";
                 user.setNotification(notification);
                 logicFile.DeleteUserInFile(users);
-                System.out.println("Thêm thông báo thành công");
             }
         }
     }
@@ -130,6 +128,7 @@ public class LogicNotificationAndVoucher {
             System.out.println("******************************");
         }
         //trở về màn hình ...
+        System.out.println("Đang quay trở về màn hình tuỳ chọn...");
         NotificationVoucherFlight notificationVoucherFlight = new NotificationVoucherFlight();
         notificationVoucherFlight.ViewNotificationVoucher();
     }

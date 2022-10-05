@@ -11,7 +11,9 @@ public class Register {
     public void register() throws IOException {
         Scanner scan = new Scanner (System.in);
         Account account = new Account();
-        System.out.println("***** Đăng ký tài khoản người dùng *****");
+        System.out.println("-----------------------------------------");
+        System.out.println("|-----------ĐĂNG KÝ TÀI KHOẢN-----------|");
+        System.out.println("-----------------------------------------");
         int tempPerm = 1; //nếu là 0 => admin  1=> user  2=> guest
 
         String tempEmail;
@@ -40,7 +42,7 @@ public class Register {
             tempPassword = scan.nextLine();
         }
         account.AddAccount(tempEmail,tempPassword,tempPerm);
-        System.out.println("Đăng ký tài khoản người dùng thành công");
+        System.out.println("Đăng ký tài khoản người dùng thành công!");
         MenuMain menuMain = new MenuMain();
         menuMain.DisplayMain();
     }

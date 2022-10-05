@@ -13,8 +13,10 @@ import java.util.Scanner;
 public class BookingWizard {
     public void bookingWizard() throws FileNotFoundException {
         Scanner scan = new Scanner (System.in);
-        System.out.println("**************** Đặt vé ****************");
-        System.out.println("Tra cứu chuyến bay");
+        System.out.println("-----------------------------------------");
+        System.out.println("|---------------- ĐẶT VÉ ---------------|");
+        System.out.println("-----------------------------------------");
+        System.out.println("*********** Tra cứu chuyến bay **********");
         System.out.print("Điểm đi: ");
         String tempFromPlace = scan.nextLine();
 
@@ -37,9 +39,14 @@ public class BookingWizard {
             return;
         }
 
-        for (Flight temp: filteredFlights) System.out.println(temp);
+        for (Flight temp: filteredFlights) {
+            System.out.println("*****************************************");
+            System.out.println(temp);
+        }
         Flight selected;
         do {
+            System.out.println("*****************************************");
+            System.out.println("Tra cứu thành công.");
             System.out.println("Vui lòng nhập mã chuyến bay mong muốn. " +
                     "Nhập 0 để quay trở về màn hình chính.");
             String tempFlightCode = scan.nextLine();
@@ -60,7 +67,7 @@ public class BookingWizard {
             amount = scan.nextInt();
             scan.nextLine();
             if (amount < 1 || amount > selected.getNumberOfSeats()) {
-                System.out.printf("Vui lòng chỉ lựa chọn số lượng giữa 1 và %d.",selected.getNumberOfSeats());
+                System.out.printf("Vui lòng chỉ lựa chọn số lượng giữa 1 và %d.\n",selected.getNumberOfSeats());
             }
             else break;
         } while (true);
@@ -79,18 +86,20 @@ public class BookingWizard {
                 if (selectedVoucher != null) {
                     float discount = selected.getPrice()*amount*((float) selectedVoucher.getValueVoucher()/100);
                     System.out.printf("Mã khuyến mãi áp dụng thành công. " +
-                                    "Bạn được giảm %d%% cho chuyến bay này.\n",
-                                    selectedVoucher.getValueVoucher());
+                                    "Bạn được giảm %d%% (%f VND) cho chuyến bay này.\n",
+                                    selectedVoucher.getValueVoucher(),discount);
                     break;
                 }
                 else System.out.println("Mã khuyến mãi không hợp lệ. Vui lòng thử lại.");
             }
         } while (true);
 
+        System.out.println("*****************************************");
         System.out.println("Đang đặt vé. 0% hoàn thành...");
         tempLLF.selectFlight(selected,amount,selectedVoucher);
 
-        System.out.println("Đặt chuyến bay thành công.");
+        System.out.println("Đặt chuyến bay thành công!");
+        System.out.println("*****************************************");
         System.out.println("Nhập 1 nếu bạn muốn xem các chuyến bay đã đặt.");
         System.out.println("Nhập 0 nếu bạn muốn quay trở về màn hình chính.");
         int ans;

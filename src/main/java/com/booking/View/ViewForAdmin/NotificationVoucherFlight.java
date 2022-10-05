@@ -10,6 +10,8 @@ public class NotificationVoucherFlight {
     public void ViewNotificationVoucher() throws IOException {
         LogicNotificationAndVoucher logicNotificationAndVoucher = new LogicNotificationAndVoucher();
         System.out.println("----------------------------------");
+        System.out.println("------ THÔNG BÁO VÀ VOUCHER ------");
+        System.out.println("----------------------------------");
         System.out.println("-1) Gửi thông báo cho người dùng--");
         System.out.println("-2) Tạo mã Voucher Khuyến Mại   --");
         System.out.println("-3) Danh sách Voucher Khuyến Mại--");

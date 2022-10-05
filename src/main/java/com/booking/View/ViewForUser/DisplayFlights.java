@@ -14,7 +14,9 @@ public class DisplayFlights {
     LogicFile tempLF = new LogicFile();
     LogicListFlight tempLLF = new LogicListFlight();
     public void displayFlights() throws FileNotFoundException {
-        System.out.println("********** Quản lý chuyến bay **********");
+        System.out.println("-----------------------------------------");
+        System.out.println("|---------- QUẢN LÝ CHUYẾN BAY ---------|");
+        System.out.println("-----------------------------------------");
         List<Booking> bookings;
         int count = 0;
         try {
@@ -28,6 +30,7 @@ public class DisplayFlights {
 //                if (++count == 1) ; // Header
                 count++;
                 System.out.println(temp);
+                System.out.println("*****************************************");
             }
         }
         if (count == 0) {
@@ -43,14 +46,11 @@ public class DisplayFlights {
         do {
             try {
                 ans = scan.nextInt();
-                if (ans != 1 && ans != 0) {
+                if (ans != 1 && ans != 0)
                     System.out.println("Vui lòng chỉ nhập giá trị 1 hoặc 0.");
-                    continue;
-                }
                 else break;
             } catch (InputMismatchException e) {
                 System.out.println("Vui lòng chỉ nhập giá trị 1 hoặc 0.");
-                continue;
             }
         } while (true);
         switch (ans) {
@@ -68,9 +68,11 @@ public class DisplayFlights {
         }
     }
     public void editFlights() {
-        System.out.println("************ Hủy chuyến bay ************");
+        System.out.println("-----------------------------------------");
+        System.out.println("|------------ HỦY CHUYẾN BAY -----------|");
+        System.out.println("-----------------------------------------");
         Scanner scan = new Scanner(System.in);
-        String tempBookingCode = null;
+        String tempBookingCode;
         do {
             System.out.print("Nhập mã đặt vé của chuyến bay cần hủy " +
                     "(Nhập 0 để quay về màn hình chính): ");
@@ -78,7 +80,7 @@ public class DisplayFlights {
                 tempBookingCode = scan.nextLine();
                 if (tempBookingCode.equals("0")) break;
                 else if (tempLLF.cancelFlight(tempBookingCode)) {
-                    System.out.println("Hủy chuyến bay thành công.");
+                    System.out.println("Hủy chuyến bay thành công! Đang quay trở về màn hình chính...");
                     break;
                 }
                 else System.out.println("Không tìm thấy mã đặt vé. Vui lòng thử lại.");
