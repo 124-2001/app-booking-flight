@@ -131,8 +131,10 @@ public class LogicListFlight {
             if (booking.getCodeBooking().equals(bookingCode.toUpperCase())) {
                 for (Flight flight: flights)
                     if (booking.getFlightCode().toUpperCase().equals(flight.getFlightCode())) {
+                        flights.remove(flight);
                         int newSeats = flight.getNumberOfSeats() + booking.getNumberOfSeats();
                         flight.setNumberOfSeats(newSeats);
+                        flights.add(flight);
                         break;
                     }
                 try {

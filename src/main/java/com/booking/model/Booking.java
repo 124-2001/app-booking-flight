@@ -55,6 +55,7 @@ public class Booking extends Flight {
     @Override
     public String toString() {
         return "Mã đặt vé: " + codeBooking +
-                "\n" + super.toString();
+                "\n" + super.toString() +
+                "\nSố ghế ngồi: " + super.getNumberOfSeats();
     }
 }

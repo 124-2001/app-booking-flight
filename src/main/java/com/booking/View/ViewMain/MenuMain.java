@@ -9,9 +9,9 @@ public class MenuMain {
         System.out.println("-----------------------------------------");
         System.out.println("|-----------APP BOOKING FLIGHT----------|");
         System.out.println("|---------------------------------------|");
-        System.out.println("|            1) Đăng nhập               |");
-        System.out.println("|            2) Đăng ký                 |");
-        System.out.println("|            3) Thoát chương trình      |");
+        System.out.println("|          1) Đăng nhập                 |");
+        System.out.println("|          2) Đăng ký                   |");
+        System.out.println("|          3) Thoát chương trình        |");
         System.out.println("-----------------------------------------");
         System.out.print("Nhập lựa chọn : ");
         String n = sc.nextLine();
