@@ -180,7 +180,7 @@ public class LogicListFlight {
         }
         else {
             SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-            System.out.println("*******LIST CÁC CHUYẾN BAY*******");
+            System.out.println("     *******LIST CÁC CHUYẾN BAY*******");
             for (Flight flight : flights) {
                 System.out.println("*****************************************");
                 System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
