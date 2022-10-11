@@ -191,7 +191,7 @@ public class LogicListFlight {
                 System.out.println("*****************************************");
                 System.out.println("Mã chuyến bay : "+ flight.getFlightCode());
                 System.out.println("Tên chuyến bay : "+flight.getFlightName());
-                System.out.println("Điểm xuất phát : "+flight.getFromPlace()+"--------Điểm hạ cánh : "+flight.getToPlace());
+                System.out.println("Điểm xuất phát : "+flight.getFromPlace()+"--------  Điểm hạ cánh : "+flight.getToPlace());
                 System.out.println("Ngày bay : "+formatter.format(flight.getTime().getTime()));
                 System.out.println("Giá vé : "+flight.getPrice());
                 System.out.println("Số chỗ ngồi tối đa : "+flight.getNumberOfSeats());

@@ -258,4 +258,5 @@ public class LogicFile {
             WriteStringJsonToFile(json,"list_user.txt");
         }
     }
+
 }
