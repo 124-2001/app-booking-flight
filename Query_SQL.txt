@@ -1,0 +1,43 @@
+--  tạo bảng Product
+CREATE TABLE Product(
+id INT PRIMARY KEY Not NULL AUTO_INCREMENT,
+ten_san_pham VARCHAR(255) NOT NULL,
+price FLOAT NOT NULL,
+created_at DATETIME NULL
+)
+
+-- Viết câu lệnh thêm 15 bản ghi sản phẩm là các loại ô tô, giá cả, ngày tạo
+INSERT INTO product(ten_san_pham,price) VALUES 
+('Toyota Vios',520),
+('Toyota Cross',800),
+('Hyundai Accent',510),
+('Honda City',360),
+('Mitsubishi Xpander',620),
+('Mazda CX-5',900),
+('Kia Seltos',700),
+('Kia 3',650),
+('Ford Ranger',1100),
+('Honda CRV',1100),
+('Hyundai i10',360),
+('Hyundai Santafe',1000),
+('Kia Carnival',1800),
+('Hyundai Tucson',800)
+
+-- Viết câu lệnh lấy ra các sản phẩm có giá tiền > 115 triệu
+SELECT * FROM product WHERE price>115
+
+-- Viết câu lệnh lấy ra các sản phẩm có chứa chữ ‘k’
+SELECT * FROM product WHERE ten_san_pham LIKE '%k%'
+
+-- Viết câu lệnh lấy ra các sản phẩm có tên là dòng xe ‘kia’ (Vì xe ô tô có kia morning, Toyota vios) hoặc giá tiền < 200 triệu
+SELECT * FROM product WHERE ten_san_pham LIKE '%k%' OR price<200
+
+
+-- Viết câu lệnh lấy ra các sản phẩm dùng toán tử IN với giá trị giá cả là 100 triệu, 130 triệu, 140 triệu, 150 triệu, 160 triệu, 170 triệu
+SELECT * FROM product WHERE price IN(100,130,140,150,160,170)
+
+-- Viết câu lệnh lấy ra tất cả giá tiền trong bảng, nếu có nhiều giá tiền trùng lặp thì chỉ lấy 1 giá trị thôi
+SELECT  DISTINCT price FROM product 
+
+
+
